@@ -1,0 +1,24 @@
+ 
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Base de datos SQLite
+db.sqlite3
+*.db
+
+venv/
+# Migraciones compiladas
+**/migrations/*.pyc
+**/migrations/__pycache__/
+
+# Logs y caché
+*.log
+*.pot
+*.pyc
+*.swp
+*.swo
+
+# VSCode
+.vscode

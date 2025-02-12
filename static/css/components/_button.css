@@ -1,0 +1,21 @@
+/* Estilos base para los botones */
+.btn {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--mint-green);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Efecto hover para los botones */
+.btn:hover {
+    background-color: darken(var(--mint-green), 10%);
+    transform: scale(1.05); /* Escala ligeramente el botón */
+    
+}

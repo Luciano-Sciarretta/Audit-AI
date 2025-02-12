@@ -1,0 +1,10 @@
+
+
+.home {
+    text-align: center;
+    
+}
+
+.home__title {
+    font-family: var(--main-font);;
+}

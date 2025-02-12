@@ -1,0 +1,24 @@
+.navbar {
+    height: 7rem;
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--dark-blue);
+
+}
+
+.navbar__links {
+    margin-right: 7rem;
+    
+
+}
+
+.navbar__link {
+    margin-left: 3rem;
+    text-decoration: none;
+    color: var(--light-gray);
+    transition: color 0.3s ease; 
+    &:hover {
+        color: var(--mint-green);
+        transform: scale(1.5);
+    }
+}

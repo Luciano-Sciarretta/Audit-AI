@@ -1,0 +1,31 @@
+
+.alert {
+    display: inline-flex;
+    margin: 0 auto;
+
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    padding: 1.5rem 2.5rem;
+    border-radius: 3px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+
+.alert__message {
+    font-size: 1rem;
+    
+    margin: 0;
+}
+
+
+.alert > .alert__close {
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    outline: transparent;
+    font-size: 1rem;
+    transition: var(--generic-transition);
+  }

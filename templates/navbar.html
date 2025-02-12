@@ -1,0 +1,14 @@
+<header>
+    <nav class="navbar" >
+        <div class="navbar__links">
+            <a  class="navbar__link  montserrat-1"  href="{% url 'home' %}">Home</a>
+            <a  class="navbar__link  montserrat-1"  href="{% url 'admin:index' %}" target="_blank">Admin Panel</a>
+            {% if user.is_authenticated %}
+            <a  class="navbar__link  montserrat-1"  href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a  class="navbar__link  montserrat-1"  href="{% url 'login' %}">Sign Up/Login</a>
+            {% endif %}
+
+        </div>
+    </nav>
+</header>
