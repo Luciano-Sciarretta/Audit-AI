@@ -10,8 +10,20 @@ Retroceder dos niveles hasta el directorio raíz de la aplicación:
 
 cd ../..
 
+3. Crear la base de datos y opcional un superusuario para poder usar el admin panel(hay acceso directo en la navbar) de django.
+
+    Crear la base de datos: 
+        python manage.py makemigrations
+        python manage.py migrate
+
+    Super usuario:
+        python manage.py createsuperuser
+
+    Inciar la aplicación:
+        python manage.py runserver
+
 3. Ejecutar el servidor de desarrollo
-Ejecuta el siguiente comando en la raíz del proyecto:
+Ejecutar el siguiente comando en la raíz del proyecto:
 
 python manage.py runserver
 
