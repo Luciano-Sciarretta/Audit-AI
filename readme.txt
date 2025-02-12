@@ -1,7 +1,7 @@
-Iniciar la aplicación
+Iniciar la aplicación:
 
 1. Activar el entorno virtual
-Navega a la carpeta del entorno virtual y actívalo:
+Navegar a la carpeta del entorno virtual y activarlo:
 
 En Windows (CMD o PowerShell): cd VENV/Scripts/activate
 
