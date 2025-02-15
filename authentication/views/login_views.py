@@ -14,7 +14,7 @@ def login_company(request):
         
         if user is not None:
             login(request, user)
-            messages.success(request, f"Welcome {user.username}")
+            messages.success(request, "Login successful! Welcome back!")
             return redirect('home')
         else:
             messages.error(request, "Invalid username or password.")
