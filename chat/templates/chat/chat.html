@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container audit-container">
+
+<h1>Welcome  {% if request.user.is_authenticated %} {{request.user.username|title}} {% endif %}</h1>
+
+</div>
+
+
+
+{% endblock %}

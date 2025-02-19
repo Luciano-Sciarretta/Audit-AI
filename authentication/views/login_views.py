@@ -15,7 +15,7 @@ def login_company(request):
         if user is not None:
             login(request, user)
             messages.success(request, "Login successful! Welcome back!")
-            return redirect('home')
+            return redirect('chat')
         else:
             messages.error(request, "Invalid username or password.")
   
@@ -24,4 +24,5 @@ def login_company(request):
 
 def logout_company(request):
     logout(request)
+    messages.success(request, 'Logout successfuly')
     return redirect('login')

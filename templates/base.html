@@ -17,19 +17,22 @@
 
 <body>
     {% include 'navbar.html' %}
+
     {% if messages %}
 
     {% for message in messages %}
-    <div class="container text-center">
+    <div class="container flash-container text-center">
         <div class="alert alert-{{ message.tags }}">
             <p class="alert__message montserrat-2 ">{{ message }}</p>
-            <button class="alert__close">x</button>
+            
         </div>
     </div>
     {% endfor %}
 
     {% endif %}
+
     <main class="main">
+
 
         {% block content %}
         {% endblock %}
