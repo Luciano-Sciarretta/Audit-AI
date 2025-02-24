@@ -1,5 +1,19 @@
 <header>
     <nav class="navbar" >
+        <div class="navbar__logo">
+            <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                <!-- Cerebro (IA) -->
+                <path d="M100,40 Q120,60 100,80 Q80,60 100,40 Z" fill="#00CC99" />
+                <path d="M100,80 Q120,100 100,120 Q80,100 100,80 Z" fill="#00CC99" />
+                <path d="M100,120 Q120,140 100,160 Q80,140 100,120 Z" fill="#00CC99" />
+              
+                <!-- Escudo (normas ISO) -->
+                <path d="M100,30 L120,50 L120,90 Q120,110 100,130 Q80,110 80,90 L80,50 Z" fill="none" stroke="#F5F5F5" stroke-width="5" />
+              
+                <!-- Texto "AuditAI" -->
+                <text x="100" y="180" font-family="Arial, sans-serif" font-size="20" fill="#F5F5F5" text-anchor="middle" font-weight="bold">AuditAI</text>
+              </svg>
+        </div>
         <div class="navbar__links">
             <a  class="navbar__link  montserrat-1"  href="{% url 'home' %}">Home</a>
             <a  class="navbar__link  montserrat-1"  href="{% url 'admin:index' %}" target="_blank">Admin Panel</a>
