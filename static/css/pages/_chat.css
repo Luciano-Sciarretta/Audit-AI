@@ -1,0 +1,14 @@
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat__title {
+    color: var(--mint-green);
+}
+
+.chat__subtitle {
+    color: var(--light-grey);
+}

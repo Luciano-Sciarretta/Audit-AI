@@ -1,48 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<main class="main">
+    <div class="container home-container">
+        <div class="home__logo">
+            
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 70">
+                    <!-- Fondo del logo (dark-grey) -->
+                    <rect width="150" height="70" fill="#333333" />
 
-<div class="container home">
-    <h1 class="homr__title montserrat-1">Welcome to
-        AuditAI!</h1>
-    <p class="home__info montserrat-2 ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos est amet, quasi ipsa laboriosam
-        reiciendis
-        architecto officiis dolores ipsam in! Eligendi magnam ipsam odit quo excepturi, saepe facilis! Suscipit, nihil!
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit provident mollitia repudiandae nemo unde
-        corporis dolore placeat reiciendis vero numquam deleniti iure rerum tenetur ipsum dolorum odio autem, expedita
-        reprehenderit.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quae ullam non id suscipit ad repudiandae
-        praesentium fugit tempora dolores vero nihil rerum incidunt corrupti, distinctio dolor veniam, sed impedit?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam neque non in, minima, dicta laborum aspernatur
-        impedit ipsum quos eos soluta unde alias libero dignissimos accusamus rerum provident delectus inventore.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos est amet, quasi ipsa laboriosam reiciendis
-        architecto officiis dolores ipsam in! Eligendi magnam ipsam odit quo excepturi, saepe facilis! Suscipit, nihil!
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit provident mollitia repudiandae nemo unde
-        corporis dolore placeat reiciendis vero numquam deleniti iure rerum tenetur ipsum dolorum odio autem, expedita
-        reprehenderit.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quae ullam non id suscipit ad repudiandae
-        praesentium fugit tempora dolores vero nihil rerum incidunt corrupti, distinctio dolor veniam, sed impedit?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam neque non in, minima, dicta laborum aspernatur
-        impedit ipsum quos eos soluta unde alias libero dignissimos accusamus rerum provident delectus inventore.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos est amet, quasi ipsa laboriosam reiciendis
-        architecto officiis dolores ipsam in! Eligendi magnam ipsam odit quo excepturi, saepe facilis! Suscipit, nihil!
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit provident mollitia repudiandae nemo unde
-        corporis dolore placeat reiciendis vero numquam deleniti iure rerum tenetur ipsum dolorum odio autem, expedita
-        reprehenderit.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quae ullam non id suscipit ad repudiandae
-        praesentium fugit tempora dolores vero nihil rerum incidunt corrupti, distinctio dolor veniam, sed impedit?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam neque non in, minima, dicta laborum aspernatur
-        impedit ipsum quos eos soluta unde alias libero dignissimos accusamus rerum provident delectus inventore.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos est amet, quasi ipsa laboriosam reiciendis
-        architecto officiis dolores ipsam in! Eligendi magnam ipsam odit quo excepturi, saepe facilis! Suscipit, nihil!
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit provident mollitia repudiandae nemo unde
-        corporis dolore placeat reiciendis vero numquam deleniti iure rerum tenetur ipsum dolorum odio autem, expedita
-        reprehenderit.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quae ullam non id suscipit ad repudiandae
-        praesentium fugit tempora dolores vero nihil rerum incidunt corrupti, distinctio dolor veniam, sed impedit?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam neque non in, minima, dicta laborum aspernatur
-        impedit ipsum quos eos soluta unde alias libero dignissimos accusamus rerum provident delectus inventore.
-    </p>
-</div>
+                    <!-- Lupa (mint-green) -->
+                    <circle cx="75" cy="25" r="15" fill="none" stroke="#00CC99" stroke-width="4" />
+                    <line x1="90" y1="40" x2="95" y2="45" stroke="#00CC99" stroke-width="4" stroke-linecap="round" />
 
+                    <!-- Texto "AuditAI" (mint-green) -->
+                    <text x="75" y="65" font-family="Arial, sans-serif" font-size="20" fill="#00CC99"
+                        text-anchor="middle" font-weight="bold">AuditAI</text>
+                </svg>
+            
+        </div>
+        <div class="home__links">
+            {% if request.user.is_authenticated %}
+            <a class="home__link montserrat-2 " href="{% url  'logout' %}">Log Out</a>
+            {% else %}
+            <a class="home__link montserrat-2 " href="{% url 'login' %}">Sign In</a>
+            {% endif %}
+            <a class="home__link montserrat-2 " href="">Admin Panel</a>
+            <a class="home__link montserrat-2 " href="">About Us</a>
+
+        </div>
+    </div>
+</main>
 {% endblock %}

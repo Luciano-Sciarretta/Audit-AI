@@ -1,61 +1,61 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<main class="main">
+    <div class="container auth">
+        <h1 class="montserrat-2 text-center">Register</h1>
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            <div class="form__container">
+                <div class="form__field">
+                    <label for="id_username" class="form-group">Company Name:</label>
+                    {{form.username}}
 
-<div class="container auth">
-    <h1 class="montserrat-2 text-center">Register</h1>
-    <form action="" method="POST" novalidate>
-        {% csrf_token %}
-        <div class="form__container">
-            <div class="form__field">
-                <label for="id_username" class="form-group">Company Name:</label>
-                {{form.username}}
 
-                
 
-                {% for error in form.username.errors %}
-                <p style="color: red;">{{ error }}</p>
-                {% endfor %}
+                    {% for error in form.username.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div class="form__field">
+                    <label for="id_email" class="montserrat-2">Email:</label>
+                    {{form.email}}
+
+
+
+                    {% for error in form.email.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div class="form__field">
+                    <label for="id_password1" class="montserrat-2">Password:</label>
+                    {{form.password1}}
+
+
+                    {% for error in form.password1.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div class="form__field">
+                    <label for="id_password2" class="montserrat-2">Confirm Password:</label>
+                    {{form.password2}}
+
+
+                    {% for error in form.password2.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div class="form__field submit-button">
+                    <button class=" btn" type="submit">Register</button>
+                </div>
+                <div class="auth__altenative ">
+                    <p class="montserrat-2">Already have an Account??</p>
+                    <a href="{% url 'login' %}" class="montserrat-2">Log In</a>
+                </div>
             </div>
-            <div class="form__field">
-                <label for="id_email" class="montserrat-2">Email:</label>
-                {{form.email}}
+        </form>
 
-                
+    </div>
 
-                {% for error in form.email.errors %}
-                <p style="color: red;">{{ error }}</p>
-                {% endfor %}
-            </div>
-            <div class="form__field">
-                <label for="id_password1" class="montserrat-2">Password:</label>
-                {{form.password1}}
-               
-
-                {% for error in form.password1.errors %}
-                <p style="color: red;">{{ error }}</p>
-                {% endfor %}
-            </div>
-            <div class="form__field">
-                <label for="id_password2" class="montserrat-2">Confirm Password:</label>
-                {{form.password2}}
-                
-
-                {% for error in form.password2.errors %}
-                <p style="color: red;">{{ error }}</p>
-                {% endfor %}
-            </div>
-            <div class="form__field submit-button">
-                <button class=" btn" type="submit">Register</button>
-            </div>
-            <div class="auth__altenative ">
-                <p class="montserrat-2">Already have an Account??</p>
-                <a href="{% url 'login' %}" class="montserrat-2">Log In</a>
-            </div>
-        </div>
-    </form>
-
-</div>
-
-
+</main>
 {% endblock %}

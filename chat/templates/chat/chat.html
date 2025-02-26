@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
+{% include 'navbar.html' %}
+<main class="main">
+    <div class="container chat-container">
 
-<div class="container audit-container">
+        <h1 class=" chat__title  montserrat-1">Welcome {% if request.user.is_authenticated %} {{request.user.username|title}}
+            {% endif %} to AuditAI.</h1>
+        <h4 class="chat__subtitle  montserrat-2"> Our AI is ready to assist you with ISO standards.</h4>    
 
-<h1>Welcome  {% if request.user.is_authenticated %} {{request.user.username|title}} {% endif %}</h1>
-
-</div>
-
+    </div>
+</main>
 
 
 {% endblock %}

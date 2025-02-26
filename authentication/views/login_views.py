@@ -25,4 +25,4 @@ def login_company(request):
 def logout_company(request):
     logout(request)
     messages.success(request, 'Logout successfuly')
-    return redirect('login')
+    return redirect('home')

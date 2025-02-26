@@ -23,7 +23,7 @@
 .navbar__link {
     
     text-decoration: none;
-    color: var(--light-gray);
+    color: var(--light-grey);
     transition: color 0.3s ease, transform 0.3s ease;
     display: block !important; 
 

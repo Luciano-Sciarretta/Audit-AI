@@ -7,4 +7,5 @@
 @import url('components/_header.css');
 @import url('pages/_home.css');
 @import url('_fonts.css');
-@import url('_alert.css')
+@import url('_alert.css');
+@import url('pages/_chat.css');

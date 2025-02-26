@@ -1,26 +1,28 @@
 <header>
-    <nav class="navbar" >
+    <nav class="navbar">
         <div class="navbar__logo">
-            <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-                <!-- Cerebro (IA) -->
-                <path d="M100,40 Q120,60 100,80 Q80,60 100,40 Z" fill="#00CC99" />
-                <path d="M100,80 Q120,100 100,120 Q80,100 100,80 Z" fill="#00CC99" />
-                <path d="M100,120 Q120,140 100,160 Q80,140 100,120 Z" fill="#00CC99" />
-              
-                <!-- Escudo (normas ISO) -->
-                <path d="M100,30 L120,50 L120,90 Q120,110 100,130 Q80,110 80,90 L80,50 Z" fill="none" stroke="#F5F5F5" stroke-width="5" />
-              
-                <!-- Texto "AuditAI" -->
-                <text x="100" y="180" font-family="Arial, sans-serif" font-size="20" fill="#F5F5F5" text-anchor="middle" font-weight="bold">AuditAI</text>
-              </svg>
+            <a href="{% url  'home' %}">
+                <svg width="150" height="70" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 70">
+                    <!-- Fondo del logo (dark-grey) -->
+                    <rect width="150" height="70" fill="#333333" />
+
+                    <!-- Lupa (mint-green) -->
+                    <circle cx="75" cy="25" r="15" fill="none" stroke="#00CC99" stroke-width="4" />
+                    <line x1="90" y1="40" x2="95" y2="45" stroke="#00CC99" stroke-width="4" stroke-linecap="round" />
+
+                    <!-- Texto "AuditAI" (mint-green) -->
+                    <text x="75" y="65" font-family="Arial, sans-serif" font-size="20" fill="#00CC99"
+                        text-anchor="middle" font-weight="bold">AuditAI</text>
+                </svg>
+            </a>
         </div>
         <div class="navbar__links">
-            <a  class="navbar__link  montserrat-1"  href="{% url 'home' %}">Home</a>
-            <a  class="navbar__link  montserrat-1"  href="{% url 'admin:index' %}" target="_blank">Admin Panel</a>
-            {% if user.is_authenticated %}
-            <a  class="navbar__link  montserrat-1"  href="{% url 'logout' %}">Logout</a>
+            <a class="navbar__link  montserrat-1" href="{% url 'home' %}">Home</a>
+            <a class="navbar__link  montserrat-1" href="{% url 'admin:index' %}" target="_blank">Admin Panel</a>
+            {% if request.user.is_authenticated %}
+            <a class="navbar__link  montserrat-1" href="{% url 'logout' %}">Logout</a>
             {% else %}
-            <a  class="navbar__link  montserrat-1"  href="{% url 'login' %}">Sign Up/Login</a>
+            <a class="navbar__link  montserrat-1" href="{% url 'login' %}">Sign Up/Login</a>
             {% endif %}
 
         </div>
