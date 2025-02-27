@@ -18,7 +18,7 @@ def register_company(request):
                   login(request, user)
                 
                   messages.success(request, f"Registration successful! You are now logged. Welcome {user.username}!")
-                  return redirect(reverse_lazy('home'))
+                  return redirect(reverse_lazy('chat'))
             else:
                 print("Errors:", form.errors.as_data())
                 
