@@ -7,7 +7,7 @@
     --soft-yellow: #FFD700;
 
 
-    --alert-success: #00cc9925;
-    --alert-error: rgba(231, 72, 72, 0.372);
+    --alert-success: rgba(0, 204, 153, 0.438);
+    --alert-error: rgba(231, 72, 72, 0.888);
 
 }

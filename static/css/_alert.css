@@ -1,6 +1,6 @@
 .flash-container {
     position: fixed;
-    top: 90px;
+    top: 40px;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -16,7 +16,7 @@
     padding: 1.5rem 2.5rem;
     border-radius: 3px;
     margin-top: 2rem;
-    
+    z-index: 1050;
 }
 
 
@@ -24,21 +24,16 @@
     font-size: 1rem;
     margin: 0;
     color: var(--green-mint);
+    z-index: 1050;
 }
 
 .alert-success {
     background-color: var(--alert-success);
+    color: var(--light-grey);
 }
 
 .alert-error {
     background-color: var(--alert-error);
+    color: var(--light-grey);
 }
 
-/* .alert > .alert__close {
-    background: transparent;
-    cursor: pointer;
-    border: none;
-    outline: transparent;
-    font-size: 1rem;
-    transition: var(--generic-transition);
-  } */
