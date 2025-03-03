@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import ClientInput
 
-# Register your models here.
+admin.site.register(ClientInput)
+

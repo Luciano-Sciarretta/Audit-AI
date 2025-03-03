@@ -9,10 +9,10 @@
             {% endif %} to AuditAI.</h1>
         <h4 class="chat__subtitle  montserrat-2"> Our AI is ready to assist you with ISO standards.</h4>
 
-        <form action="" class="chat__form">
+        <form action="{% url 'client_input' %}" method="POST"  class="chat__form">
             {% csrf_token %}
             <div class="chat__input-group">
-                <textarea class="chat__textarea montserrat-2" name="user_input" placeholder="Ask about ISO standards..." id=""  rows="3"></textarea>
+                <textarea class="chat__textarea montserrat-2" name="client_input" placeholder="Ask about ISO standards..." id=""  rows="3"></textarea>
                 <button class="chat__button montserrat-2 btn" type="submit">Send</button>
             </div>
         </form>
