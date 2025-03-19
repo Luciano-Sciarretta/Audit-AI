@@ -1,0 +1,24 @@
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.about__title {
+    color: var(--mint-green);
+    width: 12rem;
+    margin-bottom: 2rem;
+    
+    
+}
+
+.about__description {
+    color: var(--light-grey);
+    margin: 0 8rem;
+    line-height: 2;
+    letter-spacing: 1px;
+    
+}

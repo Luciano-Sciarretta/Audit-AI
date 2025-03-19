@@ -2,56 +2,56 @@
 {% block content %}
 
 <main class="main">
-<div class=" container auth">
+    <div class=" container auth">
 
-    <div class="auth__header">
-        <h1 class="montserrat-2">Account Login</h1>
-        <p>Access our ISO standars advisory plataform and receive AI-driven recommendations.</p>
-    </div>
-    <form action="" method="POST" class="form">
-        {% csrf_token %}
+        <div class="auth__header">
+            <h1 class="montserrat-2">Account Login</h1>
+            <p>Access our ISO standars advisory plataform and receive AI-driven recommendations.</p>
+        </div>
+        <form action="" method="POST" class="form">
+            {% csrf_token %}
 
-        {% if form.non_field_errors %}
+            {% if form.non_field_errors %}
             <div class="error-message">
                 {% for error in form.non_field_errors %}
+                <p style="color: red;">{{ error }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+
+            <!-- Input:Username -->
+            <div class="form__container">
+                <div class="form__field">
+                    <label for="formInputText" class="montserrat-2">Username: </label>
+                    <input type="text" class="input" id="formInputText" name="username"
+                        placeholder="Enter your username...">
+
+                    {% for error in form.username.errors %}
                     <p style="color: red;">{{ error }}</p>
-                {% endfor %}
-            </div>
-        {% endif %}
+                    {% endfor %}
 
+                </div>
+                <div class="form__field">
+                    <label for="formInputPassword" class="montserrat-2">Password: </label>
+                    <input type="password" class="input" id="formInputPassword" type="password" name="password"
+                        placeholder="••••••••">
+                    {% for error in form.password.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div class="auth__actions">
+                    <button class="btn" type="submit">Log In</button>
 
-        <!-- Input:Username -->
-        <div class="form__container">
-            <div class="form__field">
-                <label for="formInputText" class="montserrat-2">Username: </label>
-                <input type="text" class="input" id="formInputText" name="username"
-                    placeholder="Enter your username...">
-                    
-                {% for error in form.username.errors %}
-                <p style="color: red;">{{ error }}</p>
-                {% endfor %}
+                    <a href="">Forget Password?</a>
+                </div>
+                <div class="auth__altenative">
+                    <p>Don't have an Account?</p>
+                    <a href="{% url 'register' %}">Register an Account</a>
+                </div>
+            </div>
+        </form>
 
-            </div>
-            <div class="form__field">
-                <label for="formInputPassword" class="montserrat-2">Password: </label>
-                <input type="password" class="input" id="formInputPassword" type="password" name="password"
-                    placeholder="••••••••">
-                {% for error in form.password.errors %}
-                <p style="color: red;">{{ error }}</p>
-                {% endfor %}
-            </div>
-            <div class="auth__actions">
-                <button class="btn" type="submit">Log In</button>
-
-                <a href="">Forget Password?</a>
-            </div>
-            <div class="auth__altenative">
-                <p>Don't have an Account?</p>
-                <a href="{% url 'register' %}">Register an Account</a>
-            </div>
-        </div>
-    </form>
-
-</div>
+    </div>
 </main>
 {% endblock %}

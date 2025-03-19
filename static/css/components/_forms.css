@@ -2,9 +2,11 @@
     max-width: 400px;
     margin: 2rem auto;
     padding: 2rem;
-    background: #ffffff;
+    background: var(--medium-grey);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--light-grey);
+    
+
 }
 
 .auth__header {
@@ -14,13 +16,14 @@
 
 .auth__header h1 {
     font-size: 2rem;
-    color: var(--dark-gray);
+    color: var(--mint-green);
     margin-bottom: 0.5rem;
 }
 
 .auth__header p {
     font-size: 1rem;
-    color: var(--medium-gray);
+    color: var(--light-grey);
+
 }
 
 
@@ -28,37 +31,43 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
 }
 
 .form__field {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    color: var(--light-grey);
 }
 
 .form__field label {
     font-size: 0.9rem;
-    color: var(--dark-gray);
+    color: var(--light-gray);
     font-weight: 500;
-    
+
 }
-.form__field .input  {
+
+.form__field .input {
     padding: 0.75rem;
     border: 1px solid var(--light-gray);
     border-radius: 8px;
     font-size: 1rem;
-    color: var(--dark-gray);
+    color: var(--light-grey) !important;
     transition: border-color 0.3s ease;
-    background-color: var(--light-gray) !important;
+    background-color: var(--medium-grey) !important;
+    background-clip: padding-box !important;
+    box-shadow: inset 0 0 0 1000px var(--medium-grey) !important;
+
 }
 
 
 
 
 .form__field .input:focus {
-    border-color: var(--mint-green);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 204, 153, 0.1);
+    border-color: var(--mint-green) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 1px var(--mint-green) !important;
 }
 
 .auth__actions {
@@ -84,6 +93,7 @@
 .auth__altenative {
     text-align: center;
     margin-top: 1.5rem;
+    color: var(--light-grey);
 }
 
 .auth__altenative p {
