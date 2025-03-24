@@ -1,3 +1,4 @@
+
 .navbar {
     height: 7rem;
     display: flex;
@@ -7,10 +8,10 @@
 
 }
 
-.navbar__links {
+.navbar-links {
     display: flex;
-    gap: 3rem;
-    margin-right: 2rem;
+    gap: 2rem;
+    margin-right: 3rem;
 }
 
 
@@ -20,7 +21,7 @@
     align-items: center;
 }
 
-.navbar__link {
+.nav-link {
     
     text-decoration: none;
     color: var(--light-grey);
@@ -34,6 +35,17 @@
         transform-origin: center;
     }
 }
+
+.navbar-toggler-icon {
+    filter: invert(47%) sepia(84%) saturate(1350%) hue-rotate(140deg) brightness(90%) contrast(90%);
+    border-color: var(--mint-green);
+  }
+
+  
+  
+  .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 204, 153, 0.25); /* Sombra de foco en tono similar */
+  }
 
 /* ----------------MEDIA QUERIES -----------------*/
 

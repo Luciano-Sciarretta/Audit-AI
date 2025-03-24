@@ -1,22 +1,79 @@
-<header>
-     <nav class="navbar">
-        <div class="navbar__logo">
+<header class="">
+
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid navbar">
+
+            <div class="navbar__logo ">
+                <a href="{% url  'chat' %}">
+                    <svg width="150" height="70" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 70">
+                        <rect width="150" height="70" fill="#333333" />
+                        <circle cx="75" cy="25" r="15" fill="none" stroke="#00CC99" stroke-width="4" />
+                        <line x1="90" y1="40" x2="95" y2="45" stroke="#00CC99" stroke-width="4"
+                            stroke-linecap="round" />
+                        <text x="75" y="65" font-family="Arial, sans-serif" font-size="20" fill="#00CC99"
+                            text-anchor="middle" font-weight="bold">AuditAI</text>
+                    </svg>
+                </a>
+            </div>
+            <div class="nav-links">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav navbar-links">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about_us' %}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:index' %}" target="_blank">Admin Panel</a>
+                        </li>
+                        <li class="nav-item">
+                            {% if request.user.is_authenticated %}
+                            <a class="nav-link  montserrat-1" href="{% url 'logout' %}">Logout</a>
+                        </li>
+
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link  montserrat-1" href="{% url 'login' %}">Sign Up/Login</a>
+                        </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- navbar vieja-------------------------------- -->
+
+
+
+
+    <!-- <nav class="navbar">
+        <div class="navbar__logo ">
             <a href="{% url  'chat' %}">
                 <svg width="150" height="70" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 70">
-                    <!-- Fondo del logo (dark-grey) -->
+
                     <rect width="150" height="70" fill="#333333" />
 
-                    <!-- Lupa (mint-green) -->
+
                     <circle cx="75" cy="25" r="15" fill="none" stroke="#00CC99" stroke-width="4" />
                     <line x1="90" y1="40" x2="95" y2="45" stroke="#00CC99" stroke-width="4" stroke-linecap="round" />
 
-                    <!-- Texto "AuditAI" (mint-green) -->
+
                     <text x="75" y="65" font-family="Arial, sans-serif" font-size="20" fill="#00CC99"
                         text-anchor="middle" font-weight="bold">AuditAI</text>
                 </svg>
             </a>
-        </div>
-        <div class="navbar__links">
+        </div> 
+
+        
+     <div class="navbar__links">
             <a class="navbar__link  montserrat-1" href="{% url 'home' %}">Home</a>
             <a class="navbar__link  montserrat-1" href="{% url 'about_us' %}">About Us</a>
             <a class="navbar__link  montserrat-1" href="{% url 'admin:index' %}" target="_blank">Admin Panel</a>
@@ -27,5 +84,9 @@
             {% endif %}
 
         </div>
-    </nav> 
+    </nav>   -->
+
+
+
+
 </header>
