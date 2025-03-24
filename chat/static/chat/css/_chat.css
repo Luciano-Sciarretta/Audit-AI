@@ -58,6 +58,7 @@
     flex-grow: 1;
     width: 85%;
     max-width: 44rem;
+    color: var(--light-grey);
 
     &:focus {
         border-color: var(--mint-green);
