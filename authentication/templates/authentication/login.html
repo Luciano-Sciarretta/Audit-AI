@@ -2,27 +2,28 @@
 {% block content %}
 
 <main class="main">
-    <div class=" container auth">
+    <div class=" container form-box">
 
-        <div class="auth__header">
+        <div class="section-header">
             <h1 class="montserrat-2">Account Login</h1>
             <p>Access our ISO standars advisory plataform and receive AI-driven recommendations.</p>
         </div>
-        <form action="" method="POST" class="form">
-            {% csrf_token %}
+        <div class="form-wrapper">
+            <form action="" method="POST" class="">
+                {% csrf_token %}
 
-            {% if form.non_field_errors %}
-            <div class="error-message">
-                {% for error in form.non_field_errors %}
-                <p style="color: red;">{{ error }}</p>
-                {% endfor %}
-            </div>
-            {% endif %}
+                {% if form.non_field_errors %}
+                <div class="error-message">
+                    {% for error in form.non_field_errors %}
+                    <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
 
 
-            <!-- Input:Username -->
-            <div class="form__container">
-                <div class="form__field">
+                <!-- Input:Username -->
+
+                <div class="field-group">
                     <label for="formInputText" class="montserrat-2">Username: </label>
                     <input type="text" class="input" id="formInputText" name="username"
                         placeholder="Enter your username...">
@@ -32,7 +33,7 @@
                     {% endfor %}
 
                 </div>
-                <div class="form__field">
+                <div class="field-group">
                     <label for="formInputPassword" class="montserrat-2">Password: </label>
                     <input type="password" class="input" id="formInputPassword" type="password" name="password"
                         placeholder="••••••••">
@@ -40,18 +41,19 @@
                     <p style="color: red;">{{ error }}</p>
                     {% endfor %}
                 </div>
-                <div class="auth__actions">
-                    <button class="btn" type="submit">Log In</button>
 
+                <div class="alt-section">
+                    <button class="btn" type="submit">Log In</button>
+                </div>
+                <div class="alt-section">
                     <a href="">Forget Password?</a>
                 </div>
-                <div class="auth__altenative">
+                <div class="alt-section">
                     <p>Don't have an Account?</p>
                     <a href="{% url 'register' %}">Register an Account</a>
                 </div>
-            </div>
-        </form>
-
+            </form>
+        </div>
     </div>
 </main>
 {% endblock %}

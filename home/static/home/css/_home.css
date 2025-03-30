@@ -26,12 +26,14 @@
 .home__links {
     display: flex;
     justify-content:space-evenly;
-    gap: 3rem;
+    flex-wrap: nowrap;
+    gap: 5rem;
     
 }
 
 .home__link {
     color: var(--light-grey);
+    white-space: nowrap;
     text-decoration: none;
     transition: color 0.3s ease, transform 0.3s ease;
     &:hover {
