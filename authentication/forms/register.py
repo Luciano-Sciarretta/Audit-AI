@@ -12,14 +12,11 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
         labels = {'username': 'Company Name'}
-        
-        widgets = {
-            'username': forms.TextInput(attrs={'autocomplete': 'username', 'class': 'input'}),
-            'password1': forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'input'}),
-            'password2': forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': 'input'}),
-        }
+
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs.update({'class': 'input '})
+        for field_name,  field in self.fields.items():
+            field.widget.attrs.update({ 'class': 'input'})
+            if field_name == 'password1' or field_name == 'password2':
+                field.widget.attrs.update({'autocomplete': 'new-password'})

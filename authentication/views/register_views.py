@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect, HttpResponse
-from ..forms import CustomUserCreationForm
+from django.shortcuts import render, redirect
+from ..forms.register import CustomUserCreationForm
 from django.urls import reverse_lazy
 from django.contrib.auth  import login
 from django.contrib import messages
