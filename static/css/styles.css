@@ -8,6 +8,5 @@
 @import url('pages/_about_us.css');
 @import url('_fonts.css');
 @import url('_alert.css');
-@import url('pages/_chat.css');
 @import url('../chat/css/_chat.css');
-@import url('../home/css/_home.css')
+@import url('../home/css/_home.css');

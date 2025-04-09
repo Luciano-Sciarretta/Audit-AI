@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+
+
+
 {% block content %}
-
-
 <main class="main">
   <div class="form-box">
     <div class="section-header">
@@ -12,15 +14,34 @@
         {% csrf_token %}
         {% for field in form %}
         <div class="field-group">
+
           {{field.label}}
-          {{field}}
+
+          {% if field.name == 'documents' %}
+          <div class="custom-file-upload">
+            <button type="button" class="btn btn-upload-files" id="upload-btn">Upload your CV</button>
+            <input type="file" id="{{ field.id_for_label }}" name="{{ field.name }}" style="display: none;" />
+            <span id="file-name" class="file-name">No file selected</span>
+          </div>
+          {% else %}
+
+          {{ field }}
+          {% endif %}
+
+
+          {% if field.help_text %}
+          <p class="">{{ field.help_text }}</p>
+          {% endif %}
+
           {% if field.errors %}
           {% for error in field.errors %}
           <p style="color: red;">{{ error }}</p>
           {% endfor %}
           {% endif %}
+
         </div>
         {% endfor %}
+        <span id="email-error" style="display: none; color: red;"></span>
         <div class="alt-section">
           <button class="btn" type="submit">Submit</button>
         </div>
@@ -28,5 +49,12 @@
     </div>
   </div>
 </main>
+{% endblock %}
 
+
+
+{% block javascript %}
+<script src="{% static 'authentication/js/authentication.js' %}">
+
+</script>
 {% endblock %}
