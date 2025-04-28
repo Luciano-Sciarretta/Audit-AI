@@ -3,7 +3,6 @@ from ..forms.auditor_application import AuditorApplicationForm
 
 
 def auditor_application(request):
-    print("Hola ")
     if request.method == 'POST':
         form = AuditorApplicationForm(request.POST, request.FILES)
         if form.is_valid():

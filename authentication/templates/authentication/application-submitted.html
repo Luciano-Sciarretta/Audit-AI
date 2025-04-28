@@ -1,6 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
 <main class="main">
 
-    <div class="container">
-        <h1>Aplication Submitted!!!!</h1>
+    <div class="container text-center aplication-submitted">
+        <h1>Aplication Submitted!</h1>
+        <p class="confirmation-message"></p>
+            Thank you for applying for the <strong>Auditor</strong> position. We’ve received your information, and your application is now under review.  
+        </p>
+        <p class="next-steps">
+            You’ll be notified via email as soon as the process is complete. Please check your inbox (and spam folder) for updates.  
+        </p>
+        
     </div>
 </main>
+
+{% endblock %}

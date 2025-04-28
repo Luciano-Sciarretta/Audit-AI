@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
 
-class CustomUserCreationForm(UserCreationForm):
+class CompanyCreationForm(UserCreationForm):
     
     email = forms.EmailField(
     required=True,
@@ -11,7 +11,7 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
-        labels = {'username': 'Company Name'}
+        
 
         
     def __init__(self, *args, **kwargs):
@@ -20,3 +20,11 @@ class CustomUserCreationForm(UserCreationForm):
             field.widget.attrs.update({ 'class': 'input'})
             if field_name == 'password1' or field_name == 'password2':
                 field.widget.attrs.update({'autocomplete': 'new-password'})
+                
+                
+                
+class AuditorCreationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+        labels = [{'username': 'Auditor Name'}]

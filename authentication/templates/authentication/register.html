@@ -10,7 +10,9 @@
       {% csrf_token %}
 
       <div class="field-group">
-        <label for="id_username" class="form-group">Company Name:</label>
+        <label for="id_username" class="form-group">{% if registration_type == 'company' %}Company Name: {% else %}
+          Auditor's Name {% endif %}</label>
+         
         {{form.username}}
         {% if form.username.errors %}
         <p style="color: red;">{{ form.username.errors.0 }}</p>

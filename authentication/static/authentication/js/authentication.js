@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   if (uploadButton && fileInput && fileNameDisplay) {
-    uploadButton.addEventListener('click', function (event) {
-      event.preventDefault();
+    uploadButton.addEventListener('click', function (e) {
+      e.preventDefault();
       fileInput.click();  //Simulo un click en el input hidden para acceder a buscar los archivos
     });
 
@@ -30,70 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //Validación de email
 
-  //   const email1Input = document.getElementById('id_email1');
-  //   const email2Input = document.getElementById('id_email2');
-  //   const errorElement = document.getElementById('email-error');
-  //   const form = document.querySelector('form')
-  //   const submitButton = form ? form.querySelector('button[type="submit"]') : null;
-
-
-
-  //   function validateEmail() {
-  //     const email1 = email1Input.value.trim()
-  //     const email2 = email2Input.value.trim()
-  //     console.log("Email1:", email1, "Email2:", email2)
-
-
-  //     if (email1 === '' || email2 === '') {
-  //       errorElement.style.display = 'block';
-  //       if (submitButton) submitButton.disabled = true;
-  //       return false;
-
-  //     } else if (email1 !== email2) {
-  //       errorElement.textContent = 'All emails should be exactly the same in content and formatting.';
-  //       errorElement.style.display = 'block'
-  //       if (submitButton) submitButton.disabled = true
-  //       return false
-
-  //     } else {
-  //       errorElement.style.display = 'none'
-  //       if (submitButton) submitButton.disabled = false
-  //       return true
-  //     }
-  //   }
-
-  //   function validateOnSubmit() {
-  //     const email1 = email1Input.value.trim();
-  //     const email2 = email2Input.value.trim();
-
-  //     if (email1 === '' && email2 === '') {
-  //       errorElement.textContent = 'Emails cannot be empty.';
-  //       errorElement.style.display = 'block';
-  //       if (submitButton) submitButton.disabled = true;
-  //       return false;
-  //     }
-  //     return validateEmail(); // Reutilizamos la validación normal
-  //   }
-
-
-
-  //   if (email1Input && email2Input) {
-  //     validateEmail(); // Estado inicial
-  //     email1Input.addEventListener('input', validateEmail);
-  //     email2Input.addEventListener('input', validateEmail);
-  //   }
-
-  //   if (form) {
-  //     form.addEventListener('submit', function (e) {
-  //       if (!validateEmail()) {
-  //         e.preventDefault();
-  //       }
-  //     });
-  //   }
-
-  // });
-
-
   const email1Input = document.getElementById('id_email1');
   const email2Input = document.getElementById('id_email2');
   const errorElement = document.getElementById('email-error');
@@ -104,21 +40,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const email1 = email1Input.value.trim();
     const email2 = email2Input.value.trim();
 
-    console.log("Email1:", email1, "Email2:", email2);
-
     // Si ambos están vacíos
     if (email1 === '' && email2 === '') {
-      if (isSubmit) {
+      if (isSubmit === true) {
         errorElement.textContent = 'Emails cannot be empty.';
         errorElement.style.display = 'block';
+       
       } else {
         errorElement.style.display = 'none';
       }
-      if (submitButton) submitButton.disabled = true;
+      
       return false;
     }
 
-    // Si no coinciden
     else if (email1 !== email2) {
       errorElement.textContent = 'All emails should be exactly the same in content and formatting.';
       errorElement.style.display = 'block';
@@ -135,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Validación inicial 
   if (email1Input && email2Input) {
+
     validateEmail(); // Estado inicial (no es submit)
     email1Input.addEventListener('input', () => validateEmail());
     email2Input.addEventListener('input', () => validateEmail());
@@ -142,10 +77,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (form) {
     form.addEventListener('submit', function (e) {
-      if (!validateEmail(true)) { // Pasamos true para indicar que es submit
+      const isValid = validateEmail(true)
+      if (!isValid) { 
         e.preventDefault();
-      }
+      } 
     });
+    
   }
+  
 });
 
