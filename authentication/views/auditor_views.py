@@ -19,5 +19,7 @@ def auditor_application(request):
     
     return render(request, 'authentication/auditor-application.html', context)
 
+
+# Template con mensage de aplicación enviada  con éxito
 def application_submitted(request):
     return render(request, 'authentication/application-submitted.html')

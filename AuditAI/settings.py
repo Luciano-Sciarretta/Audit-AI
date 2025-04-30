@@ -29,8 +29,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    
-    
     #Propias
     'authentication.apps.AuthenticationConfig',
     'home.apps.HomeConfig',

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from ..forms.register import CompanyCreationForm,AuditorCreationForm
+from ..forms.register import UserCreationForm
 from django.urls import reverse_lazy
 from django.contrib.auth  import login
 from django.contrib import messages
@@ -8,7 +8,7 @@ from django.contrib import messages
 def register_company(request):
     if request.method == 'POST':
         try:
-            form = CompanyCreationForm(request.POST)
+            form = UserCreationForm(request.POST)
             if form.is_valid():
                 user = form.save(commit=False)
                 user.username = user.username.lower()
@@ -30,8 +30,8 @@ def register_company(request):
             return redirect('register')
             
     else:    
-        form = CompanyCreationForm()
-        context = {'registration_type': 'company', 'form': form}
+        form = UserCreationForm()
+        context = {'registration_type': 'client', 'form': form}
     return render(request, 'authentication/register.html', context)
 
 
@@ -39,7 +39,7 @@ def register_auditor(request, uuid):
     
     if request.method == 'POST':
         try:
-            form = AuditorCreationForm(request.POST)
+            form = UserCreationForm(request.POST)
             if form.is_valid():
                 user = form.save(commit=False)
                 user.username = user.username.lower()
@@ -59,7 +59,6 @@ def register_auditor(request, uuid):
             return redirect('register')
             
     else:
-        form = AuditorCreationForm()
+        form = UserCreationForm()
         context = {'registration_type': 'auditor', 'form': form}
-
         return render(request, 'authentication/register.html', context)

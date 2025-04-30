@@ -1,11 +1,12 @@
 from django.contrib import admin
-from .models.auditor import AuditorApplication, AuditorProfile
+from .models import AuditorApplication
 from django.core.exceptions import ValidationError
+# from django.contrib.auth.models import User
 
 # Register your models here.
 
 class AuditorApplicationAdmin(admin.ModelAdmin):
-    list_display = ['name', 'surname', 'document', 'photo', 'location', 'competency', 'iso_standard', 'phone', 'documents' , 'email1', 'submission_date', 'is_processed','status']
+    list_display = ['name', 'surname', 'document','competency', 'iso_standard', 'credentials' , 'email1', 'submission_date', 'is_processed','status']
     list_filter = ['status', 'is_processed']
     search_fields = ['name', 'surname', 'email1']
     actions = ['approve_applications', 'reject_applications']
@@ -30,15 +31,13 @@ class AuditorApplicationAdmin(admin.ModelAdmin):
     reject_applications.short_description = "Rechazar solicitudes seleccionadas"
 
 
-
-
 class AuditorProfileAdmin(admin.ModelAdmin):
     list_display = ['name', 'surname', 'email1', 'user', 'approved_at']
     search_fields = ['name', 'surname', 'email1', 'user__username']
     readonly_fields = ['approved_at']
 
+
 admin.site.register(AuditorApplication, AuditorApplicationAdmin)
-admin.site.register(AuditorProfile, AuditorProfileAdmin)
 
 
 

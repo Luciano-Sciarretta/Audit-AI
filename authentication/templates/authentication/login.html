@@ -12,22 +12,9 @@
       <form action="" method="POST" class="">
         {% csrf_token %}
 
-        <!-- {% if form.non_field_errors %} -->
-        <!-- <div class="error-message">
-          {% for error in form.non_field_errors %}
-          <p style="color: red;">{{ error }}</p>
-          {% endfor %}
-        </div> -->
-        <!-- {% endif %} -->
-
-
-        <!-- Input:Username -->
-
         <div class="field-group">
           <label for="formInputText" class="montserrat-2">Username: </label>
           <input type="text" class="input" id="formInputText" name="username" placeholder="Enter your username...">
-
-         
 
         </div>
         <div class="field-group">

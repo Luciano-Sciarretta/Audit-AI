@@ -1,19 +1,18 @@
 from django import forms
-from ..models.auditor import AuditorApplication 
+from ..models import AuditorApplication 
 
 class AuditorApplicationForm(forms.ModelForm):
     class Meta:
         model = AuditorApplication
-        fields = ['name', 'surname','document', 'photo', 'location', 'competency', 'iso_standard','email1', 'email2', 'phone', 'documents']
+        fields = ['name', 'surname','document', 'competency', 'iso_standard', 'email1', 'email2', 'credentials']
         labels = {
             'name': 'Name',
             'email1': 'Email',
             'email2': 'Confirm your email',
-            'phone': 'Phone',
-            'documents':'CV and Credentials',
+            'credentials':'CV and Credentials',
         }
         
-        help_texts = {'documents': 'Please upload your document in PDF format (maximum 5MB)'
+        help_texts = {'credentials': 'Please upload your document in PDF format (maximum 5MB)'
 }
         
     def __init__(self, *args, **kwargs):

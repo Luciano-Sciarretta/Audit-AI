@@ -17,10 +17,10 @@
             <div class="chat__history montserrat-2">
                 {% for input in inputs %}
                 <div class="chat__messages">
-                    <p><strong>{{ input.user.username }} ({{ input.created_at }}):</strong></p>
+                    <p><strong>{{ input.user.username.capitalize }}:</strong></p>
                     <p>{{ input.client_input }}</p>
                     {% for response in input.airesponse_set.all %}
-                    <p><strong>AI ({{ response.created_at }}):</strong></p>
+                    <p><strong>AuditAI:</strong></p>
                     <p>{{ response.response_text }}</p>
                     {% endfor %}
                 </div>

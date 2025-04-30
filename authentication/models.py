@@ -1,6 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.core.validators import FileExtensionValidator
 import uuid
 from django.utils import timezone
 from django.core.mail import send_mail
@@ -9,10 +7,13 @@ from django.urls import reverse
 from django.conf import settings
 from django.contrib import messages
 
+
+#Clase para que  AuditorAplication herede y separar un poco el código
+
 class AuditorBase(models.Model):
     class Meta:
         abstract = True
-
+        
     ISO_AUDITABLE_CHOICES = [
         ('9001', 'ISO 9001 (Quality Management)'),
         ('14001', 'ISO 14001 (Environmental Management)'),
@@ -30,19 +31,11 @@ class AuditorBase(models.Model):
     name = models.CharField(max_length=100, null=False, )
     surname = models.CharField(max_length=100, null=False, )
     document = models.PositiveIntegerField( null=False, unique=True)
-    photo = models.ImageField(upload_to='auditors/photos/', default='auditors/photos/default.png', validators=[
-            FileExtensionValidator(['jpg', 'jpeg', 'png', 'webp']),         
-        ],
-        verbose_name="Profile Photo")
-    location = models.CharField(max_length=200, null=False, )
     competency =models.CharField(max_length = 50, choices= AUDITOR_ROLE_CHOICES, default="internal")
     iso_standard = models.CharField(max_length = 20, choices = ISO_AUDITABLE_CHOICES, default="9001")
     email1 = models.EmailField(blank= False, unique = True) 
     email2 =  models.EmailField(null = True)
-    phone = models.CharField(max_length= 30, blank = False )
-    documents = models.FileField(upload_to='auditor_docs/', blank=True, null=True, verbose_name="Douments PDF")# Subir muchos documentos
-
-
+    credentials = models.FileField(upload_to='auditor_docs/', blank=True, null=True, verbose_name="Douments PDF")# Subir muchos documentos
 
 class AuditorApplication(AuditorBase):
     STATUS_CHOICES = [
@@ -132,10 +125,6 @@ class AuditorApplication(AuditorBase):
         return f'{self.name} {self.surname} - {self.status}'
     
          
-class AuditorProfile(AuditorBase):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    approved_at = models.DateTimeField(auto_now_add=True)
-    
-    
-    def __str__(self):
-        return f'{self.user.username} -- {self.approved_at}'
+         
+         
+         
