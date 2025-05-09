@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+
+<main class="main auditors">
+  <div class="container ">
+    <div class="section-header">
+      <h1 class="montserrat-2"> Connect with certified professionals worldwide
+      </h1>
+    </div>
+
+    <div class="row g-5" >
+      {% for auditor in auditors %}
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100  " >
+          <div class="img-wrapper">
+            <img src="{{auditor.profile_image.url}}" class="card-img-top" alt="...">
+          </div>
+          <div class="card-body ">
+            <h5 class="card-title montserrat-2 text-center">{{auditor.username.capitalize}}
+              {{auditor.surname.capitalize}}</h5>
+            <div class="competencies text-center ">
+              <span>Competency: {{auditor.competency}}</span>
+              <br>
+              <span>Iso_standard: {{auditor.iso_standard}}</span>
+              <a href="" class="btn mt-3" >View Profile</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+.card {
+    background-color: var(--medium-grey);
+    color: var(--mint-green);
+}
+
+
+.section-header {
+    margin-bottom: 6rem;
+}
+
+.img-wrapper {
+    height: 12rem;
+    overflow: hidden;
+}
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

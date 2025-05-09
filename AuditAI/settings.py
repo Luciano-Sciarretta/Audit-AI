@@ -32,7 +32,9 @@ INSTALLED_APPS = [
     #Propias
     'authentication.apps.AuthenticationConfig',
     'home.apps.HomeConfig',
-    'chat.apps.ChatConfig'
+    'chat.apps.ChatConfig',
+    'auditors.apps.AuditorsConfig',
+    
 ]
 
 MIDDLEWARE = [

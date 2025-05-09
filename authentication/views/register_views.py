@@ -36,7 +36,6 @@ def register_company(request):
 
 
 def register_auditor(request, uuid):
-    
     if request.method == 'POST':
         try:
             form = UserCreationForm(request.POST)
@@ -47,12 +46,15 @@ def register_auditor(request, uuid):
                 
                 if user is not None:
                     login(request, user)
-                    return redirect('chat')
+                    return redirect('auditors')
                 else:
                     messages.error(request, "Registration failed unexpectedly")
                     return render(request, 'authentication/register.html', 
                             {'form': form, 'registration_type': 'auditor'})
-                    
+            else:
+                messages.error(request, "Please correct the errors below")
+                return render(request, 'authentication/register.html',
+                           {'form': form, 'registration_type': 'auditor'})       
         except Exception as e:
             print("Error:", str(e))
             messages.error(request, "An error has ocurred during the registration. Please try again" )

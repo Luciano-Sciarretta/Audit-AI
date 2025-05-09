@@ -11,7 +11,7 @@ def auditor_application(request):
         else:
             print("Formulario no válido")    
     else:
-        print("Formulario no válido")
+        
         form = AuditorApplicationForm()
     context = {
         'form': form
