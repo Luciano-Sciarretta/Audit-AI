@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from authentication.models import CustomUser
 from django.core.validators import FileExtensionValidator
 
 
@@ -18,7 +18,7 @@ class AuditorProfile(models.Model):
     ('lead', 'Lead Auditor'),
     ('external', 'External Auditor'),
 ]
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     username = models.CharField(max_length= 50)
     name = models.CharField(max_length= 50,blank=True, null=True )
     surname = models.CharField(max_length= 50, blank=True, null=True)

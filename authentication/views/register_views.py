@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect
-from ..forms.register import UserCreationForm
+from authentication.forms import ClientCreationForm, AuditorCreationForm
 from django.urls import reverse_lazy
 from django.contrib.auth  import login
 from django.contrib import messages
 
 
-def register_company(request):
+def register_client(request):
     if request.method == 'POST':
         try:
-            form = UserCreationForm(request.POST)
+            form = ClientCreationForm(request.POST)
             if form.is_valid():
                 user = form.save(commit=False)
                 user.username = user.username.lower()
@@ -21,24 +21,24 @@ def register_company(request):
                   return redirect(reverse_lazy('chat'))
             else:
                 print("Errors:", form.errors.as_data())
-                return redirect('register')
+                return redirect('register-client')
                 
 
         except Exception as e:
             print(f"Error:  {str(e)}")
             messages.error(request, "An error has ocurred during the registration. Please try again" )
-            return redirect('register')
+            return redirect('register-client')
             
     else:    
-        form = UserCreationForm()
+        form = ClientCreationForm()
         context = {'registration_type': 'client', 'form': form}
-    return render(request, 'authentication/register.html', context)
+    return render(request, 'authentication/client-register.html', context)
 
 
 def register_auditor(request, uuid):
     if request.method == 'POST':
         try:
-            form = UserCreationForm(request.POST)
+            form = AuditorCreationForm(request.POST)
             if form.is_valid():
                 user = form.save(commit=False)
                 user.username = user.username.lower()
@@ -58,9 +58,9 @@ def register_auditor(request, uuid):
         except Exception as e:
             print("Error:", str(e))
             messages.error(request, "An error has ocurred during the registration. Please try again" )
-            return redirect('register')
+            return redirect('register-auditor')
             
     else:
-        form = UserCreationForm()
+        form = AuditorCreationForm()
         context = {'registration_type': 'auditor', 'form': form}
-        return render(request, 'authentication/register.html', context)
+        return render(request, 'authentication/auditor-register.html', context)

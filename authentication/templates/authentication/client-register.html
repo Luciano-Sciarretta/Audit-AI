@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main class="main">
+  <div class="container form-box">
+    <div class="section-header">
+      <h1 class="montserrat-2 text-center">Register</h1>
+    </div>
+    <form action="" method="POST" novalidate>
+      {% csrf_token %}
+
+      <div class="field-group">
+        <label for="id_username" class="form-group">Client Name:</label>
+         
+        {{form.username}}
+        {% if form.username.errors %}
+        <p style="color: red;">{{ form.username.errors.0 }}</p>
+        {% endif %}
+      </div>
+      <div class="field-group">
+        <label for="id_email" class="montserrat-2">Email:</label>
+        {{form.email}}
+
+        {% if form.email.errors %}
+        <p style="color: red;">{{ form.email.errors.0 }}</p>
+        {% endif %}
+      </div>
+      <div class="field-group">
+        <label for="id_password1" class="montserrat-2">Password:</label>
+        {{form.password1}}
+
+        {% if form.password1.errors %}
+        <p style="color: red;">{{ form.password1.errors.0 }}</p>
+        {% endif %}
+      </div>
+      <div class="field-group">
+        <label for="id_password2" class="montserrat-2">Confirm Password:</label>
+        {{form.password2}}
+
+        {% if form.password2.errors %}
+        <p style="color: red;">{{ form.password2.errors.0 }}</p>
+        {% endif %}
+      </div>
+      <div class="alt-section ">
+        <button class=" btn" type="submit">Register</button>
+      </div>
+      <div class="alt-section">
+        <p class="montserrat-2">Already have an Account??</p>
+        <a href="{% url 'login' %}" class="montserrat-2">Log In</a>
+      </div>
+  </div>
+  </form>
+  </div>
+</main>
+{% endblock %}
