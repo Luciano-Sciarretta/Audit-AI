@@ -10,6 +10,6 @@
 @import url('_alert.css');
 @import url('../chat/css/_chat.css');
 @import url('../home/css/_home.css');
-@import url('../authentication/css/application-submitted.css');
+@import url('../auditors_applicants/css/application-submitted.css');
 @import url('components/card.css');
 @import url('../auditors/css/auditors.css');

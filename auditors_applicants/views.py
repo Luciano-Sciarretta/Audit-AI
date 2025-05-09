@@ -1,5 +1,5 @@
 from django.shortcuts import  render, redirect
-from ..forms.auditor_application import AuditorApplicationForm
+from .forms import AuditorApplicationForm
 
 
 def auditor_application(request):

@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'chat.apps.ChatConfig',
     'auditors.apps.AuditorsConfig',
+    'auditors_applicants.apps.AuditorsApplicantsConfig'
     
 ]
 

@@ -1,5 +1,5 @@
 from django import forms
-from ..models import AuditorApplication 
+from .models import AuditorApplication 
 
 class AuditorApplicationForm(forms.ModelForm):
     class Meta:
