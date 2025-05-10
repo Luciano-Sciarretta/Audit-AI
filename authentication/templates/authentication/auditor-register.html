@@ -4,13 +4,13 @@
 <main class="main">
   <div class="container form-box">
     <div class="section-header">
-      <h1 class="montserrat-2 text-center">Register</h1>
+      <h1 class="montserrat-2 text-center">Register Auditor</h1>
     </div>
     <form action="" method="POST" novalidate>
       {% csrf_token %}
 
       <div class="field-group">
-        <label for="id_username" class="form-group">Client Name:</label>
+        <label for="id_username" class="form-group">Auditor's Name:</label>
          
         {{form.username}}
         {% if form.username.errors %}
@@ -41,6 +41,7 @@
         <p style="color: red;">{{ form.password2.errors.0 }}</p>
         {% endif %}
       </div>
+      
       <div class="alt-section ">
         <button class=" btn" type="submit">Register</button>
       </div>

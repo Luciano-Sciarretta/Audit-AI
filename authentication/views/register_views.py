@@ -42,6 +42,8 @@ def register_auditor(request, uuid):
             if form.is_valid():
                 user = form.save(commit=False)
                 user.username = user.username.lower()
+                user.is_auditor = True
+                print("is_auditor?:", user.is_auditor)
                 user.save()
                 
                 if user is not None:
@@ -49,16 +51,16 @@ def register_auditor(request, uuid):
                     return redirect('auditors')
                 else:
                     messages.error(request, "Registration failed unexpectedly")
-                    return render(request, 'authentication/register.html', 
+                    return render(request, 'authentication/auditor-register.html', 
                             {'form': form, 'registration_type': 'auditor'})
             else:
                 messages.error(request, "Please correct the errors below")
-                return render(request, 'authentication/register.html',
+                return render(request, 'authentication/auditor-register.html',
                            {'form': form, 'registration_type': 'auditor'})       
         except Exception as e:
             print("Error:", str(e))
             messages.error(request, "An error has ocurred during the registration. Please try again" )
-            return redirect('register-auditor')
+            return redirect('auditor-register')
             
     else:
         form = AuditorCreationForm()

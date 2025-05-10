@@ -1,5 +1,6 @@
 from django.shortcuts import  render, redirect
 from .forms import AuditorApplicationForm
+from django.contrib import messages
 
 
 def auditor_application(request):
@@ -9,7 +10,7 @@ def auditor_application(request):
             form.save()
             return redirect('application-submitted')
         else:
-            print("Formulario no válido")    
+            messages.error(request, 'Please, check your information')  
     else:
         
         form = AuditorApplicationForm()
@@ -17,9 +18,9 @@ def auditor_application(request):
         'form': form
     }    
     
-    return render(request, 'authentication/auditor-application.html', context)
+    return render(request, 'auditors_applicants/auditor-application.html', context)
 
 
 # Template con mensage de aplicación enviada  con éxito
 def application_submitted(request):
-    return render(request, 'authentication/application-submitted.html')
+    return render(request, 'auditors_applicants/application-submitted.html')
