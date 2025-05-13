@@ -1,10 +1,11 @@
 from django.urls import path
 from .views.auditors import AuditorsProfileView, AuditorsView
 from .views.auditor_account import auditor_account
+from .views.auditor_profile import auditor_profile
 
 
 urlpatterns = [
     path('', AuditorsView.as_view(), name = 'auditors'),
-    # path('auditors-form/',AuditorsProfileView.as_view(), name='auditors-form' ),
+    path('auditor-profile/<str:pk>', auditor_profile, name = 'auditor-profile' ),
     path('auditor-account/', auditor_account, name = 'auditor-account'),
 ]

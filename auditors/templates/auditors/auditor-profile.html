@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+<main class="main">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-header__title">Profile of {{ auditor.name|title }}</h1>
+    </div>
+    <section class="profile">
+      <!-- Sección 1: Foto y nombre en una fila -->
+      <div class="profile__section profile__section--header">
+        <div class="row ">
+          <div class="col-auto">
+            <div class="profile__image-container">
+              <img
+                class="profile__image"
+                src="{{ auditor.profile_image.url }}"
+                alt="Profile image of {{ auditor.name|title }}"
+              >
+            </div>
+          </div>
+          <div class="col">
+            <h2 class="profile__name">{{ auditor.name|title }}{{auditor.surname}} {{auditor.document}}</h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección 2: Información del auditor -->
+      <div class="profile__section profile__section--info">
+        <div class="row">
+          <div class="col-12">
+            <p class="profile__role"></p>
+            <p class="profile__email"></p>
+            <p class="profile__bio">{{ auditor.bio|default:'No bio available.' }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección 3: Acciones -->
+      <div class="profile__section profile__section--actions">
+        <div class="row">
+          <div class="col-12">
+            <div class="profile__actions">
+              <!-- <a href="" class="profile__button profile__button--edit">Edit Profile</a>
+              <a href="{% url 'logout' %}" class="profile__button profile__button--logout">Logout</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+
+{% endblock %}

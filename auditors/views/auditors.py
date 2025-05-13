@@ -6,11 +6,11 @@ from ..models import AuditorProfile
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 def auditors(request):
-    return render(request, 'auditors.html')
+    return render(request, 'auditors/auditors.html')
 
 class AuditorsView(ListView):
     model = AuditorProfile
-    template_name = 'auditors.html'
+    template_name = 'auditors/auditors.html'
     context_object_name = 'auditors'
     paginate_by = 6
     
@@ -19,7 +19,7 @@ class AuditorsView(ListView):
 
 
 class AuditorsProfileView(LoginRequiredMixin, FormView):
-    template_name = 'auditor-profile-form.html'
+    template_name = 'auditors/auditor-profile-form.html'
     form_class = AuditorProfileForm
     
     def form_valid(self, form):

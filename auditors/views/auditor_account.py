@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from ..models import AuditorProfile
+from ..forms.AuditorProfileForm import AuditorProfileForm
+
 
 
 def auditor_account(request):
-    
-    # auditor = AuditorProfile.objects.get(id = pk)
-    context = {}
-    return render(request, 'auditor-account.html')
+    form = AuditorProfileForm()
+    context = {'form': form}
+    return render(request, 'auditors/auditor-profile-form.html', context)
 
 

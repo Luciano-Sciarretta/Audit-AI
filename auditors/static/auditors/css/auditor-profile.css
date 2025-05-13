@@ -1,0 +1,30 @@
+.profile {
+    padding: 2rem;
+    background-color: var(--medium-grey);
+    border: 1px solid var(--mint-green);
+    border-radius: 5px;
+}
+
+.profile__section {
+    border: 1px solid var(--mint-green);
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: var(--medium-grey);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 1.1);
+}
+
+.profile__image-container {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    border: 1px solid var(--mint-green);
+    overflow: hidden;
+    background-color: #f0f0f0; /* Fallback si no hay imagen */
+    transition: transform 0.3s ease;
+  }
+
+  .profile__image {
+    width: 100%;
+    height: 100%;
+  }

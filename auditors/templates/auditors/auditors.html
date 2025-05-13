@@ -23,7 +23,7 @@
               <span>Competency: {{auditor.competency}}</span>
               <br>
               <span>Iso_standard: {{auditor.iso_standard}}</span>
-              <a href="" class="btn mt-3" >View Profile</a>
+              <a href="{% url 'auditor-profile' auditor.id %}" class="btn mt-3" >View Profile</a>
             </div>
 
           </div>
