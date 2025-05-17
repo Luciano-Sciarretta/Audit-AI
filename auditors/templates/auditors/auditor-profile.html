@@ -1,48 +1,76 @@
 {% extends 'base.html' %}
 {% block content %}
 {% include 'navbar.html' %}
+
+
 <main class="main">
   <div class="container">
-    <div class="section-header">
-      <h1 class="section-header__title">Profile of {{ auditor.name|title }}</h1>
-    </div>
     <section class="profile">
       <!-- Sección 1: Foto y nombre en una fila -->
-      <div class="profile__section profile__section--header">
-        <div class="row ">
-          <div class="col-auto">
-            <div class="profile__image-container">
-              <img
-                class="profile__image"
-                src="{{ auditor.profile_image.url }}"
-                alt="Profile image of {{ auditor.name|title }}"
-              >
-            </div>
+
+      <div class="profile__section profile__section--header ">
+        <div class="profile__section--header">
+          <div class="profile__image-container">
+            <img class="profile__image" src="{{ auditor.profile_image.url }}"
+              alt="Profile image of {{ auditor.name|title }}">
           </div>
-          <div class="col">
-            <h2 class="profile__name">{{ auditor.name|title }}{{auditor.surname}} {{auditor.document}}</h2>
+          <div class="profile__info--container">
+            <h1 class="profile__name ">{{ auditor.name|title }} {{auditor.surname}} </h1>
+            <h6><span><strong>Auditor type:</strong></span> {{auditor.competency|title}}</h6>
+            <h6 class="profile__standards">
+              <strong>ISO Standards:</strong>
+              {% for standard in auditor.iso_standards.all %}
+              <span> {{standard.code}} </span>
+              {% if not forloop.last %} - {% endif %}
+              {% endfor %}
+            </h6>
+            <div class="profile__credentials">
+
+              {% if auditor.credential_set.all %}
+              <div class="dropdown">
+                <button class="btn   " type="button" id="credentialsDropdown" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  View Credentials ({{ auditor.credential_set.count }})
+                </button>
+                <ul class="dropdown-menu " aria-labelledby="credentialsDropdown">
+                  {% for credential in auditor.credential_set.all|slice:":3" %}
+                  <li><a class="dropdown-item" href="{{ credential.certificate_file.url }}"
+                      target="_blank">{{credential.title}}</a></li>
+                  {% empty %}
+                  <li><span class="dropdown-item">No credentials available.</span></li>
+                  {% endfor %}
+                  {% if auditor.credential_set.count > 3 %}
+                  <li><a class="dropdown-item" href="#credentials">Ver todas las credenciales</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+              {% else %}
+              <p>No credentials available.</p>
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
-
       <!-- Sección 2: Información del auditor -->
+      <h2 class="text-center">About Me</h2>
       <div class="profile__section profile__section--info">
         <div class="row">
           <div class="col-12">
             <p class="profile__role"></p>
             <p class="profile__email"></p>
-            <p class="profile__bio">{{ auditor.bio|default:'No bio available.' }}</p>
+            <p class="profile__bio ">{{ auditor.bio|default:'No bio available.' }}</p>
           </div>
         </div>
       </div>
 
       <!-- Sección 3: Acciones -->
+      <h2 class="text-center">Contact</h2>
       <div class="profile__section profile__section--actions">
         <div class="row">
           <div class="col-12">
             <div class="profile__actions">
-              <!-- <a href="" class="profile__button profile__button--edit">Edit Profile</a>
-              <a href="{% url 'logout' %}" class="profile__button profile__button--logout">Logout</a> -->
+              <a href=""><strong>Phone:</strong>{{auditor.phone}}</a>
+              <a href=""><strong>Email:</strong>{{auditor.email}}</a>
             </div>
           </div>
         </div>

@@ -1,28 +1,7 @@
  .header {
     background-color: var(--dark-grey);
 }  
-/*
- .navbar {
-    height: 7rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* background-color: var(--dark-grey); 
 
- }
-
-.navbar-links {
-    display: flex;
-    gap: 2rem;
-    margin-right: 3rem;
-}
-
-
-.navbar__logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
 
  .nav-link {
 
