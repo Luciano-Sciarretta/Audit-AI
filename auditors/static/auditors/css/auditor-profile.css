@@ -1,7 +1,7 @@
 .profile {
     padding: 2rem;
     background-color: var(--medium-grey);
-    border: 1px solid var(--mint-green);
+    border: 1px solid var(--light-grey);
     border-radius: 5px;
 }
 .profile h2 {
@@ -16,29 +16,34 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     color: var(--light-grey);
+    padding: 3rem;
+    
     
 }
 
 .profile__section--header {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5rem;
+  justify-content:space-between;
+  align-items: flex-start;
+  gap: 3rem;
   max-width: 100%;
   letter-spacing: 2px;
+  padding: 2rem;
 }
 
 .profile__section--header h1 {
   font-size: 2rem;
+  
 }
 
 .profile__image-container {
-    width: 12rem;
-    height: 12rem;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
     overflow: hidden;
-    background-color: #f0f0f0; /* Fallback si no hay imagen */
+    background-color: #f0f0f0;
     transition: transform 0.3s ease;
+    
   }
 
   .profile__image {
@@ -60,6 +65,24 @@
   }
 
   .profile__credential {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.profile__standards{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.profile__section--edit {
+  align-self: center;
+  margin-left: auto;
+}
+
+
+  .profile__section--info{
     display: flex;
     justify-content: center;
     align-items: center;

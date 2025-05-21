@@ -9,7 +9,7 @@ def auditor_profile(sender, instance, created, **kwargs):
     Inicializa campos básicos desde el usuario y maneja errores.
     """
     if created:
-        print("Al principio de signal")
+        print("Al principio de la señal")
         user = instance
         if user.is_auditor:
             try:

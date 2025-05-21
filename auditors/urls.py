@@ -7,5 +7,5 @@ from .views.auditor_profile import auditor_profile
 urlpatterns = [
     path('', AuditorsView.as_view(), name = 'auditors'),
     path('auditor-profile/<str:pk>', auditor_profile, name = 'auditor-profile' ),
-    path('auditor-account/', auditor_account, name = 'auditor-account'),
+    path('auditor-edit-account/', auditor_account, name = 'auditor-edit-account'),
 ]

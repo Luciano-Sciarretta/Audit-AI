@@ -48,7 +48,7 @@ def register_auditor(request, uuid):
                 
                 if user is not None:
                     login(request, user)
-                    return redirect('auditors')
+                    return redirect('auditor-account')
                 else:
                     messages.error(request, "Registration failed unexpectedly")
                     return render(request, 'authentication/auditor-register.html', 

@@ -3,7 +3,10 @@
 
 
 <main class="main ">
+
   <div class="form-box">
+    <h2 class="profile-title text-center">Complete Your Profile</h2>
+    <p class="profile-instructions text-center">To proceed, please fill out your profile with the required information. All fields are mandatory to ensure we have the necessary details for your account. Thank you!</p>
     <div class="form-wrapper">
       <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -12,6 +15,7 @@
 
           {{field.label}}
           {{field}}
+          {{field.errors}}
 
           {% endfor %}
         </div>

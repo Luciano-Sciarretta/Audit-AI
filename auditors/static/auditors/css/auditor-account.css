@@ -1,0 +1,14 @@
+.form-box {
+    max-width: 47rem;
+}
+
+.profile-title {
+    color: var(--mint-green);
+}
+
+.profile-instructions {
+    color:var(--mint-green);
+    max-width: 32rem;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
