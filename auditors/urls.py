@@ -1,5 +1,5 @@
 from django.urls import path
-from .views.auditors import AuditorsProfileView, AuditorsView
+from .views.auditors import AuditorsView
 from .views.auditor_account import auditor_account
 from .views.auditor_profile import auditor_profile
 

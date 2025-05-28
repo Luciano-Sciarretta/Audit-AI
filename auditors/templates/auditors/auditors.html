@@ -22,7 +22,8 @@
             <div class="competencies text-center ">
               <span>Competency: {{auditor.competency}}</span>
               <br>
-              <span>Iso_standard: {{auditor.iso_standard}}</span>
+              <span>Iso_standard: {% for standard in auditor.iso_standards.all|slice:2 %} {{standard.code}} {% if not forloop.last %}- {% endif %} {% empty %}
+                None assigned{% endfor %} </span>
               <a href="{% url 'auditor-profile' auditor.id %}" class="btn mt-3" >View Profile</a>
             </div>
 
@@ -33,7 +34,4 @@
     </div>
   </div>
 </main>
-
-
-
 {% endblock %}

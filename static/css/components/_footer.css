@@ -1,0 +1,32 @@
+.footer {
+    margin-top: 3rem;
+    background-color: var(--medium-grey);
+    padding: 2rem;
+}
+
+.footer__container {
+    color: var(--mint-green);
+}
+
+.footer__container h3  {
+    color: var(--light-grey);
+    font-size: 1.4rem;
+}
+
+.footer__container p {
+    color: var(--light-grey);
+    font-size: 0.8rem;
+}
+
+.footer__container a {
+    color: var(--mint-green);
+}
+
+/* .col-left, .col-right {
+    
+} */
+
+
+.copyright {
+    margin-top: 4rem;
+}

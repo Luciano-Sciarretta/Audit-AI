@@ -11,7 +11,6 @@
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
-    
 }
 
 .chat__history {
@@ -22,7 +21,7 @@
     color: var(--light-grey);    
     /* border: 1px solid var(--mint-green); */
     padding: 2rem;
-    height: 22rem;
+    height: 9rem;
     
 }
 
