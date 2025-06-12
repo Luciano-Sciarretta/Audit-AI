@@ -21,7 +21,8 @@ def register_client(request):
                   return redirect(reverse_lazy('chat'))
             else:
                 print("Errors:", form.errors.as_data())
-                return redirect('register-client')
+                context = {'registration_type': 'client', 'form': form}
+                return render(request, 'authentication/client-register.html', context)
                 
 
         except Exception as e:

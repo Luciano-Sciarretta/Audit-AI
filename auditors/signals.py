@@ -8,7 +8,6 @@ def auditor_profile(sender, instance, created, **kwargs):
     Crea un AuditorProfile automáticamente para un nuevo usuario con is_auditor=True.
     Inicializa campos básicos desde el usuario y maneja errores.
     """
-    print("En auditor_profile")
     if created:
         user = instance
         if user.is_auditor:
@@ -17,7 +16,7 @@ def auditor_profile(sender, instance, created, **kwargs):
                 )
                 print(f" En signal auditor profile id = {auditor_profile.id}")
             except Exception as e:
-                print(f" EN signal Failed to create AuditorProfile for user {user.username}: {str(e)}")
+                print(f" Failed to create AuditorProfile for user {user.username}: {str(e)}")
     
     
 def update_profile(sender, instance, created, **kwargs):

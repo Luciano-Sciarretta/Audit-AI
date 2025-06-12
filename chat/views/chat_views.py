@@ -12,9 +12,7 @@ def chat_view(request):
     # Mostrar el historial de entradas del usuario
     inputs = ClientInput.objects.filter(user=request.user).order_by('-created_at')
     print("client inputs:", inputs)
-    return render(request, 'chat/chat.html', {'inputs': inputs})
-
-
+    return render(request, 'chat/chat.html', {'inputs': inputs, 'hide_footer': True})
 
 
 @login_required(login_url='login')

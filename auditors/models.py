@@ -37,7 +37,7 @@ class Credential(models.Model):
     auditor_profile = models.ForeignKey(AuditorProfile, on_delete=models.CASCADE)
     title = models.CharField(max_length = 200)
     description = models.TextField(blank=True, null=True)
-    certificate_file = models.FileField(upload_to='auditors/credentials/%Y/%m/%d/', validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
+    certificate_file = models.FileField(upload_to='auditors/credentials/%Y/%m/%d/', validators=[FileExtensionValidator(allowed_extensions=['pdf', 'jpg'])]) 
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):

@@ -1,28 +1,21 @@
+
 .chat {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    max-width: 55rem;
-}
-
-
-.chat__wrapper {
-    display: flex;
-    flex-direction: column;
-    margin-top: 2rem;
+    justify-content: flex-start;
+    max-width: 52rem;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    height: 68%; 
 }
 
 .chat__history {
-    overflow-y: auto;
-    scrollbar-width: none; 
-            -ms-overflow-style: none;
-    background-color: var(--darck-grey);
-    color: var(--light-grey);    
-    /* border: 1px solid var(--mint-green); */
-    padding: 2rem;
-    height: 9rem;
-    
+    background-color: var(--dark-grey);
+    color: var(--light-grey);
+    padding:0rem 2rem;
+    height: 14rem;
 }
 
 
@@ -32,6 +25,7 @@
 
 .chat__subtitle {
     color: var(--light-grey);
+    margin-bottom: 4rem;
 }
 
 .chat__form {
@@ -39,7 +33,10 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 2rem;
+    padding: 0rem 2rem;
+    position: fixed;
+    bottom: 1rem;
+    z-index: 20;
 }
 
 .chat__input-group {
@@ -52,13 +49,11 @@
 .chat__textarea {
     border-radius: 8px 0 0 8px;
     background-color: var(--medium-grey);
-    z-index: 12;
+    z-index: 100;
     padding: 1rem;
     flex-grow: 1;
-    width: 85%;
-    max-width: 44rem;
+    max-width: 49rem;
     color: var(--light-grey);
-
     &:focus {
         border-color: var(--mint-green);
         outline: none;
