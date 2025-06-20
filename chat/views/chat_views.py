@@ -11,7 +11,7 @@ def chat_view(request):
     
     # Mostrar el historial de entradas del usuario
     inputs = ClientInput.objects.filter(user=request.user).order_by('-created_at')
-    print("client inputs:", inputs)
+    
     return render(request, 'chat/chat.html', {'inputs': inputs, 'hide_footer': True})
 
 
@@ -28,8 +28,7 @@ def client_input(request):
             # 2. Obtener la respuesta de la IA usando nuestra función
             ai_response_text = get_ai_response(client_input_text)
             
-            print(f"Pregunta del usuario: {client_input_text}")
-            print(f"Respuesta de la IA: {ai_response_text}")
+           
             
             # 3. Guardar la respuesta en la base de datos
             AIResponse.objects.create(

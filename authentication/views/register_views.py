@@ -18,7 +18,7 @@ def register_client(request):
                   login(request, user)
                 
                   messages.success(request, f"Registration successful! You are now logged. Welcome {user.username}!")
-                  return redirect(reverse_lazy('chat'))
+                  return redirect('client-edit-account', pk = user.profile.id)
             else:
                 print("Errors:", form.errors.as_data())
                 context = {'registration_type': 'client', 'form': form}
@@ -44,7 +44,6 @@ def register_auditor(request, uuid):
                 user = form.save(commit=False)
                 user.username = user.username.lower()
                 user.is_auditor = True
-                print("is_auditor?:", user.is_auditor)
                 user.save()
                 
                 if user is not None:

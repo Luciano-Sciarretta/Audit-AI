@@ -28,3 +28,25 @@
     color: var(--dark-grey);
     background-color: var(--light-grey)
 }
+
+
+.go-back__container {
+    background-color: var(--dark-grey);
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+
+.go-back {  
+    text-decoration: none;
+    font-size: 2.5rem;
+    color: var(--mint-green);
+    
+    
+
+}

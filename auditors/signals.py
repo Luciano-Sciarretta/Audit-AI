@@ -22,7 +22,6 @@ def auditor_profile(sender, instance, created, **kwargs):
 def update_profile(sender, instance, created, **kwargs):
     profile = instance
     user = profile.user
-    print("En update_profile")
     if user.is_auditor and not created:
         user.first_name = profile.name
         user.last_name = profile.surname
