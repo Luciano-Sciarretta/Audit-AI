@@ -32,5 +32,6 @@ def client_edit_account(request, pk):
       
    else:
       form = ClientProfileForm(instance = client)
-      context = {'form': form}
+      context = {'form': form, 'client': client}
+      print("Form:", form)
       return render(request, 'clients/client-edit-account.html', context)

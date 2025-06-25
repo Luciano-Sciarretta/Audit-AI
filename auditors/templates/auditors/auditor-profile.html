@@ -55,9 +55,11 @@
             {% endif %}
           </div>
         </div>
+        {% if request.user.id == auditor.user.id %}
         <div class="profile__info--edit">
           <a  href="{% url 'auditor-edit-account'  %}" class="btn btn-edit">Edit Profile</a>
         </div>
+        {% endif %}
       </div>
       <!-- Sección 2: Información del auditor -->
       <h2 class="text-center">About Me</h2>
