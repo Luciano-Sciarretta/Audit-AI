@@ -15,11 +15,6 @@ class AuditorsView(ListView):
     def get_queryset(self):
         return AuditorProfile.objects.all()
 
-#Último commit!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-
-
-
-
 
 
 # class AuditorsProfileView(LoginRequiredMixin, FormView):
