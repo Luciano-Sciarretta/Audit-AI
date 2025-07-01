@@ -10,7 +10,7 @@ class ClientCreationForm(UserCreationForm):
 )
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'password1', 'password2', 'is_auditor']
+        fields = ['email', 'password1', 'password2', 'is_auditor']
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -31,7 +31,7 @@ class AuditorCreationForm(UserCreationForm):
 )
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'password1', 'password2', 'is_auditor']
+        fields = ['email', 'password1', 'password2', 'is_auditor']
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

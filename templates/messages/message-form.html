@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="main">
+
+  <div class="container">
+    <div class="message">
+      <div class="">
+        <a   class="go-back__container go-back2" href="{% url 'auditors' %}" ><</a>
+      </div>
+      
+      <form action="" method="POST">
+        {% csrf_token %}
+
+        <div class="field-group">
+          {{ form.subject.label_tag }}
+          {{ form.subject }}
+
+          {% if form.subject.errors %}
+          <p style="color: red;">{{ form.subject.errors.0 }}</p>
+          {% endif %}
+
+        </div>
+
+        <div class="field-group">
+          {{ form.body.label_tag }}
+          {{ form.body }}
+
+          {% if form.body.errors %}
+          <p style="color: red;">{{ form.body.errors.0 }}</p>
+          {% endif %}
+
+        </div>
+
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+          {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+
+        <div class="mt-4 ">
+          <input class="btn" type="submit" value="Send">
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

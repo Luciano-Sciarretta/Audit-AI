@@ -10,9 +10,8 @@ def register_client(request):
         try:
             form = ClientCreationForm(request.POST)
             if form.is_valid():
-                user = form.save(commit=False)
-                user.username = user.username.lower()
-                user.save()
+                user = form.save()
+                
             
                 if user is not None:
                   login(request, user)
@@ -42,7 +41,6 @@ def register_auditor(request, uuid):
             form = AuditorCreationForm(request.POST)
             if form.is_valid():
                 user = form.save(commit=False)
-                user.username = user.username.lower()
                 user.is_auditor = True
                 user.save()
                 

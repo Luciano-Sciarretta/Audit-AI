@@ -60,6 +60,9 @@
           <a  href="{% url 'auditor-edit-account'  %}" class="btn btn-edit">Edit Profile</a>
         </div>
         {% endif %}
+        <div class="profile__info--edit">
+          <a  href="{% url 'send-message' auditor.user.id  %}" class="btn btn-edit">Send message</a>
+        </div>
       </div>
       <!-- Sección 2: Información del auditor -->
       <h2 class="text-center">About Me</h2>

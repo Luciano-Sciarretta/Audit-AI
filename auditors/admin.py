@@ -11,14 +11,14 @@ class CredentialInline(admin.TabularInline):
 
 @admin.register(AuditorProfile)
 class AuditorProfileAdmin(admin.ModelAdmin):
-    list_display = ['user', 'email', 'name', 'surname', 'competency']
+    list_display = ['user', 'get_email', 'name', 'surname', 'competency']
     list_filter = ['competency']
-    search_fields = ['user__email', 'name', 'surname', 'email']
+    search_fields = ['user__email', 'name', 'surname']
     inlines = [CredentialInline]
     filter_horizontal = ['iso_standards'] 
     fieldsets = (
         ('Auditor Info', {
-            'fields': ('user', 'email', 'name', 'surname', 'document')
+            'fields': ('user', 'name', 'surname', 'document')
         }),
         ('Contact Info', {
             'fields': ('phone', 'bio')
@@ -27,6 +27,11 @@ class AuditorProfileAdmin(admin.ModelAdmin):
             'fields': ('profile_image', 'competency', 'iso_standards')
         }),
     )
+    
+    def get_email(self, obj):
+        return obj.user.email
+    get_email.short_description = 'Email'
+    get_email.admin_order_field = 'user__email'
 
 
 @admin.register(IsoStandard)

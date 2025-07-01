@@ -9,7 +9,7 @@
   <div class="container chat">
 
     <h1 class=" chat__title  chat__title montserrat-1 text-center">Welcome {% if request.user.is_authenticated %}
-      {{request.user.username|title}}
+      {{request.user.profile.name|title}}
       {% endif %} to AuditAI.</h1>
     <h4 class="chat__subtitle  montserrat-2 text-center"> Our AI is ready to assist you with ISO standards.</h4>
 

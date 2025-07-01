@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
-from .models import ClientProfile
-from .forms import ClientProfileForm
+from ..models import ClientProfile
+from ..forms import ClientProfileForm
 from django.core.exceptions import ValidationError
 from django.contrib import messages
 

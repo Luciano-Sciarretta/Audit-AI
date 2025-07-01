@@ -46,7 +46,11 @@
     text-decoration: none;
     font-size: 2.5rem;
     color: var(--mint-green);
-    
-    
+}
 
+.go-back2 {
+    text-decoration: none;
+    font-size: 2.5rem;
+    color: var(--mint-green);
+    background-color: var(--medium-grey);
 }

@@ -7,12 +7,15 @@ def client_profile(sender, instance,  created, **kwargs):
     if created:
         if instance.is_auditor == False:
             try:
-                ClientProfile.objects.create(user = instance, email = instance.email)
+                ClientProfile.objects.create(user = instance)
                 
             except Exception as e:
                 print(f"Error en señal de  client Profile: {str(e)}")
-                
+        
+        
+            
 def client_delete_profile(sender, instance,**kwargs):
+    
     try:
         user = instance.user
         user.delete()
@@ -24,8 +27,6 @@ def client_delete_profile(sender, instance,**kwargs):
 def client_update_profile(sender, instance, created, **kwargs):
     user = instance.user
     if user.is_auditor == False and not created:
-        user.username = instance.name
-        user.email = instance.email
         user.save()
         
     else:

@@ -25,6 +25,7 @@
           <li class="nav-item mx-4 ">
             <a class="nav-link" href="{% if request.user.is_auditor %}{% url 'auditor-profile' request.user.id %} {% else %} {% url 'client-profile' request.user.profile.id %} {% endif %}">Account</a>
           </li>
+          
 
           <li class="nav-item mx-4">
             {% if request.user.is_authenticated %}

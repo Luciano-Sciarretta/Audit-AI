@@ -12,11 +12,11 @@ def auditor_profile(sender, instance, created, **kwargs):
         user = instance
         if user.is_auditor:
             try:
-                auditor_profile = AuditorProfile.objects.create(user = user, email = user.email,
+                auditor_profile = AuditorProfile.objects.create(user = user
                 )
                 print(f" En signal auditor profile id = {auditor_profile.id}")
             except Exception as e:
-                print(f" Failed to create AuditorProfile for user {user.username}: {str(e)}")
+                print(f" Failed to create AuditorProfile for user {user.email}: {str(e)}")
     
     
 def update_profile(sender, instance, created, **kwargs):
@@ -25,8 +25,6 @@ def update_profile(sender, instance, created, **kwargs):
     if user.is_auditor and not created:
         user.first_name = profile.name
         user.last_name = profile.surname
-        user.username = profile.name
-        user.email = profile.email
         user.save()
             
         
