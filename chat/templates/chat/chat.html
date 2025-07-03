@@ -17,7 +17,7 @@
     <div class="chat__history montserrat-2">
       {% for input in inputs %}
       <div class="chat__messages">
-        <p><strong>{{ input.user.username.capitalize }}:</strong></p>
+        <p><strong>{{ input.user.profile.name.capitalize }}:</strong></p>
         <p>{{ input.client_input }}</p>
         {% for response in input.airesponse_set.all %}
         <p><strong>AuditAI:</strong></p>
