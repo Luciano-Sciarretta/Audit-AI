@@ -3,7 +3,7 @@ from authentication.models import CustomUser
 from django.core.exceptions import ValidationError
 
 class ClientProfile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     name = models.CharField(max_length= 200, blank= True,  null=True)
     company_name = models.CharField(max_length=200, blank= True,  null=True)
     phone_number = models.CharField(max_length=200, blank=True)

@@ -1,39 +1,66 @@
-<header class="header" >
+<header class="header">
   <nav class="navbar navbar-expand-lg ">
     <div class="container-fluid">
+      {%  if request.user.is_authenticated %}
+      {% if request.user.is_auditor %}
+      <a class="navbar-brand " href="{% url  'auditors' %}">
+        <div id="svgContainer"></div>
+      </a>
+      {% else %}
       <a class="navbar-brand " href="{% url  'chat' %}">
         <div id="svgContainer"></div>
       </a>
+      {% endif %}
+      {% endif %}
+      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item mx-4 ">
+          <li class="nav-item mx-1 ">
             <a class="nav-link " href="{% url 'home' %}">Home</a>
           </li>
-          <li class="nav-item mx-4 ">
+          <li class="nav-item mx-1 ">
             <a class="nav-link" href="{% url 'about_us' %}">About Us</a>
           </li>
-          <li class="nav-item mx-4 ">
+
+          {% if request.user.is_authenticated and request.user.is_superuser %}
+          <li class="nav-item mx-1 ">
             <a class="nav-link" href="{% url 'admin:index' %}" target="_blank">Admin Panel</a>
           </li>
-          <li class="nav-item mx-4 ">
+          {% endif %}
+          <li class="nav-item mx-1 ">
             <a class="nav-link" href="{% url 'auditors' %}">Auditors</a>
           </li>
-          <li class="nav-item mx-4 ">
-            <a class="nav-link" href="{% if request.user.is_auditor %}{% url 'auditor-profile' request.user.id %} {% else %} {% url 'client-profile' request.user.profile.id %} {% endif %}">Account</a>
-          </li>
-          
 
-          <li class="nav-item mx-4">
+
+          {% if request.user.is_authenticated %}
+          {% if not request.user.is_auditor %}
+          <li class="nav-item mx-1 ">
+            <a class="nav-link" href="{% url 'client-profile' request.user.clientprofile.id %}">Account</a>
+          </li>
+          {% else %}
+
+          <li class="nav-item mx-1 ">
+            <a class="nav-link" href="{% url 'auditor-profile' request.user.auditorprofile.id %}">Account</a>
+          </li>
+
+          {% endif %}
+          {% endif %}
+
+          <li class="nav-item mx-1 ">
+            <a class="nav-link" href="{% url 'inbox' %}">Inbox</a>
+          </li>
+
+          <li class="nav-item mx-1">
             {% if request.user.is_authenticated %}
             <a class="nav-link  montserrat-1" href="{% url 'logout' %}">Logout</a>
           </li>
 
           {% else %}
-          <li class="nav-item mx-4">
+          <li class="nav-item mx-1">
             <a class="nav-link  montserrat-1" href="{% url 'login' %}">Sign Up/Login</a>
           </li>
           {% endif %}
@@ -56,3 +83,7 @@
 
   document.getElementById('svgContainer').innerHTML = svgCode;
 </script>
+
+
+
+

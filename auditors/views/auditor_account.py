@@ -41,7 +41,8 @@ def auditor_account(request):
             form = AuditorProfileForm(instance=auditor)
         else:
             form = AuditorProfileForm()
-        context = {'form': form}
+        context = {'form': form,
+                   'auditor': auditor}
         return render(request, 'auditors/auditor-account.html', context)
 
 

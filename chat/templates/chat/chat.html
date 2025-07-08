@@ -8,16 +8,14 @@
 <main class="main ">
   <div class="container chat">
 
-    <h1 class=" chat__title  chat__title montserrat-1 text-center">Welcome {% if request.user.is_authenticated %}
-      {{request.user.profile.name|title}}
-      {% endif %} to AuditAI.</h1>
+    <h1 class=" chat__title  chat__title montserrat-1 text-center">Welcome {%  if request.user.is_authenticated %} {{request.user.clientprofile.name}}  {% endif  %}to AuditAI.</h1>
     <h4 class="chat__subtitle  montserrat-2 text-center"> Our AI is ready to assist you with ISO standards.</h4>
 
 
     <div class="chat__history montserrat-2">
       {% for input in inputs %}
       <div class="chat__messages">
-        <p><strong>{{ input.user.profile.name.capitalize }}:</strong></p>
+        <p><strong>{{ input.user.clientprofile.name.capitalize }}:</strong></p>
         <p>{{ input.client_input }}</p>
         {% for response in input.airesponse_set.all %}
         <p><strong>AuditAI:</strong></p>
@@ -44,3 +42,8 @@
 {% block javascript %}
 <script src="{% static 'chat/js/main.js' %}"></script>
 {% endblock %}
+
+
+<!-- #{% if request.user.is_authenticated %}
+{{request.user.profile.name|title}}
+{% endif %} -->

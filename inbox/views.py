@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 class MessageCreateView(CreateView):
     model = Message
     form_class = MessageForm
-    template_name = 'messages/message-form.html'
+    template_name = 'inbox/message-form.html'
     
     
     def dispatch(self, request, *args, **kwargs):
@@ -40,3 +40,19 @@ class MessageCreateView(CreateView):
 
         return reverse_lazy('auditor-profile', kwargs={'pk': self.recipient.auditorprofile.id})
     
+    
+def inbox(request):
+    total_messages = Message.objects.filter(recipient = request.user)
+    unread_messages_count = total_messages.filter(is_read=False).count()
+    print("Messages:", total_messages)
+    context = {'unread_messages_count': unread_messages_count,
+               'total_messages': total_messages}
+    return render(request, 'inbox/inbox.html', context)
+
+
+def single_message(request, pk):
+    single_message = Message.objects.get(id = pk)
+    single_message.is_read = True
+    single_message.save()
+    context = {'single_message': single_message}
+    return render(request, 'inbox/single-message.html', context)

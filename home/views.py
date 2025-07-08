@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 
 def home(request):
     if request.user.is_authenticated:
-        return redirect('chat')
+        if request.user.is_auditor:
+            return redirect('auditor-profile', request.user.auditorprofile.id )
+        else:
+            return redirect('chat')
         
     return render(request, 'home/home.html')
 

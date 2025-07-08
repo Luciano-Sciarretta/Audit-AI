@@ -15,3 +15,5 @@
 @import url('../auditors/css/auditors.css');
 @import url('../auditors/css/auditor-profile.css');
 @import url('../auditors/css/auditor-account.css');
+@import url('../inbox/css/inbox.css');
+@import url('../inbox/css/single-message.css');

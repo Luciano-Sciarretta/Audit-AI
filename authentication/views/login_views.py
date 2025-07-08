@@ -5,7 +5,11 @@ from django.contrib import messages
 def login_company(request):
     
     if request.user.is_authenticated:
-        return redirect('home')
+        print("DEBUG:", request.user.username, request.user.is_auditor)
+        if request.user.is_auditor:
+            return redirect('auditors')
+        else:
+            return redirect('home')
     
     if request.method == 'POST':
         username = request.POST['username']
@@ -15,7 +19,10 @@ def login_company(request):
         if user is not None:
             login(request, user)
             messages.success(request, "Login successful! Welcome back!")
-            return redirect('chat')
+            if user.is_auditor:
+                return redirect('auditors')
+            else:
+                return redirect('home')
         else:
             messages.error(request, "Invalid username or password.")
   
