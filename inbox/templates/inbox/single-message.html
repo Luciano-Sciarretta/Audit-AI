@@ -4,20 +4,31 @@
 <main class="main  ">
     <div class="container">
       <div class="singleMessage">
+        <div class="singleMessage__container">
         <div class="go-back__container">
           <a class="go-back" href="{% url 'inbox' %}"><</a>
         </div>
-        <h4 class="singleMessage__subject">{{single_message.subject}}</h4>
+        <h4 class="singleMessage__subject">Subject: {{single_message.subject}}</h4>
           {%  if request.user.is_auditor %}
           <a href="{% url 'client-profile' single_message.sender.clientprofile.id  %}"
-            class="singleMessage__author">{{single_message.sender.clientprofile.name|title}}</a>
+            class="singleMessage__author">By {{single_message.sender.clientprofile.name|title}}</a>
           {% else %}
           <a href="{% url 'auditor-profile' single_message.sender.auditorprofile.id  %}"
-            class="singleMessage__author">{{single_message.sender.auditorprofile.name|title}}</a>
+            class="singleMessage__author">By {{single_message.sender.auditorprofile.name|title}}</a>
             {% endif %}
           <p class="singleMessage__date">{{single_message.created}}</p>
           <div class="singleMessage__body">{{single_message.body|linebreaksbr}}</div>
       </div>
+      {%  if request.user.is_auditor %}
+      <div class="singleMessage__respond">
+        <a href="{% url 'send-message' single_message.sender.clientprofile.id %}" class="btn">Respond</a>
+      </div>
+      {% else %}
+      <div class="singleMessage__respond">
+        <a href="{% url 'send-message' single_message.sender.auditorprofile.id %}" class="btn">Respond</a>
+      </div>
+      {% endif %}
+    </div>
     </div>
   </main>
 

@@ -16,7 +16,6 @@ class MessageCreateView(CreateView):
     
     def dispatch(self, request, *args, **kwargs):
         self.recipient = get_object_or_404(CustomUser, pk = kwargs.get('pk'))
-        print("Recipient:", self.recipient)
         return super().dispatch(request, *args, **kwargs)
     
     def form_valid(self, form):
@@ -37,14 +36,12 @@ class MessageCreateView(CreateView):
     
     
     def get_success_url(self):
-
         return reverse_lazy('auditor-profile', kwargs={'pk': self.recipient.auditorprofile.id})
     
     
 def inbox(request):
     total_messages = Message.objects.filter(recipient = request.user)
     unread_messages_count = total_messages.filter(is_read=False).count()
-    print("Messages:", total_messages)
     context = {'unread_messages_count': unread_messages_count,
                'total_messages': total_messages}
     return render(request, 'inbox/inbox.html', context)
