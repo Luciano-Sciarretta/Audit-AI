@@ -49,9 +49,10 @@ class MessageCreateView(CreateView):
     
 def inbox(request):
     total_messages = Message.objects.filter(recipient = request.user)
-    unread_messages_count = total_messages.filter(is_read=False).count()
-    context = {'unread_messages_count': unread_messages_count,
-               'total_messages': total_messages}
+    
+    context = {
+               'total_messages': total_messages
+               }
     return render(request, 'inbox/inbox.html', context)
 
 

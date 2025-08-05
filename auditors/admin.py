@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AuditorProfile, Credential, IsoStandard
+from .models import AuditorProfile, Credential, IsoStandard, Country
 
 
 class CredentialInline(admin.TabularInline):
@@ -18,7 +18,7 @@ class AuditorProfileAdmin(admin.ModelAdmin):
     filter_horizontal = ['iso_standards'] 
     fieldsets = (
         ('Auditor Info', {
-            'fields': ('user', 'name', 'surname', 'document')
+            'fields': ('user', 'name', 'surname', 'document', 'country', 'location')
         }),
         ('Contact Info', {
             'fields': ('phone', 'bio')
@@ -45,3 +45,5 @@ class CredentialAdmin(admin.ModelAdmin):
     list_filter = ['created_at']
     search_fields = ['title', 'auditor_profile__email']
 
+
+admin.site.register(Country)

@@ -12,6 +12,7 @@
     <div class="row g-5" >
       {% for auditor in auditors %}
       <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="{% url 'auditor-profile' auditor.id %}" class="auditor__card">
         <div class="card h-100  " >
           <div class="img-wrapper">
             <img src="{{auditor.profile_image.url}}" class="card-img-top" alt="...">
@@ -24,11 +25,12 @@
               <br>
               <span>Iso_standard: {% for standard in auditor.iso_standards.all|slice:2 %} {{standard.code}} {% if not forloop.last %}- {% endif %} {% empty %}
                 None assigned{% endfor %} </span>
-              <a href="{% url 'auditor-profile' auditor.id %}" class="btn mt-3" >View Profile</a>
+              
             </div>
 
           </div>
         </div>
+      </a>
       </div>
       {% endfor %}
     </div>

@@ -17,7 +17,10 @@ class AuditorProfile(models.Model):
     phone = models.CharField(max_length=50,  null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     profile_image = models.ImageField(  upload_to='auditors/profile_images', default= 'auditors/profile_images/default.png',  null=True, blank=True)
+    country = models.ForeignKey("Country", on_delete=models.SET_NULL, max_length=80, null=True, blank=True)
+    location = models.CharField( max_length=80, null=True, blank=True )
     competency = models.CharField(max_length= 50, choices= AUDITOR_ROLE_CHOICES, blank=True, null=True)
+    
     iso_standards = models.ManyToManyField('IsoStandard', blank = True)
     
     def __str__(self):
@@ -41,3 +44,16 @@ class Credential(models.Model):
     
     def __str__(self):
         return f'{self.title} of {self.auditor_profile}' 
+    
+    
+class Country(models.Model):
+    name = models.CharField(max_length=200,  null=True, blank=True)
+    
+    language = models.CharField(max_length=100, null=True, blank=True)
+    timezone = models.CharField(max_length=50, null=True, blank=True)
+    
+    def __str__(self):
+        return self.name or "Unnamed Country"
+    
+    class Meta:
+        verbose_name_plural = "Countries"

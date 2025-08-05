@@ -2,9 +2,10 @@
 
 {% load static %}
 
-
 {% block content %}
 {% include 'navbar.html' %}
+
+{% if not request.user.is_auditor%}
 <main class="main ">
   <div class="container chat">
 
@@ -36,6 +37,9 @@
     </form>
   </div>
 </main>
+{% else %}
+<h1 class="text-center" style="color: white;">No podés ver  la página del chat</h1>
+{% endif %}
 
 
 {% endblock %}

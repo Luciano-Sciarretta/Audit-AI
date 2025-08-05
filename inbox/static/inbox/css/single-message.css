@@ -1,10 +1,12 @@
 .singleMessage {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
+    /* justify-content: space-between;
+    align-items: center; */
     background-color: var(--medium-grey);
     padding: 2.5rem;
     color: var(--light-grey);
+    max-width: 100%;
+    overflow-x: hidden
 }
 
 
@@ -18,3 +20,10 @@
     font-size: 0.7rem;
 }
 
+
+.singleMessage__body {
+    word-wrap: break-word; 
+    white-space: normal; 
+    margin-bottom: 3rem;
+    
+  }
