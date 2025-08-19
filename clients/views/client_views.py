@@ -22,7 +22,7 @@ def client_edit_account(request, pk):
       if form.is_valid():
          try:
             form.save()
-            messages.success(request, "Prfile actualizado correctamente")
+            messages.success(request, "Profile actualizado correctamente")
             return redirect('chat')
          except ValidationError as e:
 

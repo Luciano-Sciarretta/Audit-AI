@@ -2,25 +2,51 @@
 {% block content %}
 {% include 'navbar.html' %}
 
+
 <main class="main">
   <div class="container">
     <div class="row profile">
       <div class="col-md-9">
         <div class=" profile__main">
-          <section class="profile__photo">
-            <img src="{{auditor.profile_image.url}}" class="profile__photo-image" alt="Foto del auditor">
-          </section>
+          <div class="profile__flex">
+            <section class="profile__photo">
+              <img src="{{auditor.profile_image.url}}" class="profile__photo-image" alt="Foto del auditor">
+            </section>
 
+            {% if request.user.auditorprofile.id == auditor.id%}
+            <div class="profile__edit">
+              <a href="{% url 'auditor-edit-account' %}" class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                  height="20" fill="none" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                    d="M3 21v-3.75L16.5 3.75a1.5 1.5 0 0 1 2.12 0l1.63 1.63a1.5 1.5 0 0 1 0 2.12L6.75 21H3z" />
+                </svg>
+                Edit Account</a>
+            </div>
+            {% endif %}
+
+          </div>
           <div class="profile__description">
             <h4 class="profile__name"><strong>{{auditor.name}}</strong> <strong>{{auditor.surname}}</strong></h4>
             <p>{{auditor.competency|title}} Auditor</p>
-            <h6 class="profile__location"><strong>
+            <h6 class="profile__location">
+              <strong>
                 {% if auditor.location and auditor.country %}
                 {{ auditor.location }}, {{auditor.country}}
                 {% endif %}
+              </strong>
+            </h6>
 
-              </strong></h6>
+
+            {% if request.user.is_authenticated and request.user != auditor.user %}
+            <a href="{% url 'send-message' auditor.user.id %}" class="btn profile__send_message"><svg
+                xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-send"
+                viewBox="0 0 16 16">
+                <path
+                  d="M15.964 0.686a.5.5 0 0 1 .023.812L1.57 8.948l4.656.95 2.52 4.376a.5.5 0 0 0 .91-.137l6.307-13a.5.5 0 0 1 .001-.451z" />
+              </svg> Send Message</a>
+            {% endif %}
           </div>
+
         </div>
         <div class="profile__about_me">
           <h4>About Me</h4>
@@ -32,7 +58,7 @@
         <div class="profile__licenses">
           <h4>Licenses and Certifications</h4>
         </div>
-  
+
       </div>
 
       <!------------------ COLUMNA DERECHA ------------------------------>
@@ -46,14 +72,46 @@
             {% endfor %}
           </ul>
         </section>
+
+        <section class="profile__reviews">
+          <h5>What Clients Say About This Auditor:</h5>
+          <div class="profile__thumbs">
+
+            <span id="thumb-up-count" >
+              {{ reviews_up }}
+            </span>
+
+            <span class="profile__thumb-up"  data-auditor = "{{ auditor.id }}" >
+              <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                fill="var(--light-blue)" viewBox="0 0 24 24">
+                <path
+                  d="M2 21h4V9H2v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.7L14.17 2 7.59 8.59C7.22 8.95 7 9.45 7 10v9c0 1.1.9 2 2 2h7c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1z" />
+              </svg>
+            </span>
+           
+
+
+            <span class="profile__thumb-down" data-auditor = "{{ auditor.id }}" >
+              
+              <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                fill="var(--alert-error)" viewBox="0 0 24 24" style="transform: scaleY(-1);">
+                <path
+                  d="M2 21h4V9H2v12zM23 10c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32a1 1 0 0 0-.29-.7L14.17 2 7.59 8.59C7.22 8.95 7 9.45 7 10v9c0 1.1.9 2 2 2h7c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1z" />
+              </svg>
+            </span>
+
+
+          </div>
+        </section>
+
       </div>
-      
+
     </div>
   </div>
 </main>
 
+{% load static %}
+<script src="{% static 'auditors/js/reviews.js' %}" type="module"></script>
 
 
 {% endblock %}
-
-

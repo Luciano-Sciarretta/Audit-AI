@@ -11,14 +11,14 @@ class AuditorProfile(models.Model):
     ('external', 'External Auditor'),
 ]
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    name = models.CharField(max_length= 50,blank=True, null=True )
-    surname = models.CharField(max_length= 50, blank=True, null=True)
-    document = models.CharField(max_length=60, unique=True, blank=True, null=True)
-    phone = models.CharField(max_length=50,  null=True, blank=True)
+    name = models.CharField(max_length= 50 )
+    surname = models.CharField(max_length= 50)
+    document = models.CharField(max_length=60, unique=True)
+    phone = models.CharField(max_length=50)
     bio = models.TextField(null=True, blank=True)
     profile_image = models.ImageField(  upload_to='auditors/profile_images', default= 'auditors/profile_images/default.png',  null=True, blank=True)
-    country = models.ForeignKey("Country", on_delete=models.SET_NULL, max_length=80, null=True, blank=True)
-    location = models.CharField( max_length=80, null=True, blank=True )
+    country = models.ForeignKey("Country", on_delete=models.SET_NULL, max_length=80, null = True )
+    location = models.CharField( max_length=80 )
     competency = models.CharField(max_length= 50, choices= AUDITOR_ROLE_CHOICES, blank=True, null=True)
     
     iso_standards = models.ManyToManyField('IsoStandard', blank = True)

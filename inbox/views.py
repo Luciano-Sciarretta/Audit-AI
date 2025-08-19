@@ -25,8 +25,8 @@ class MessageCreateView(CreateView):
         return super().form_valid(form)
     
     def form_invalid(self, form):
-        print("❌ Errores en el formulario:", form.errors)
-        print("❌ Errores generales:", form.non_field_errors())
+        print("Errores en el formulario:", form.errors)
+        print("Errores generales:", form.non_field_errors())
         return super().form_invalid(form)
     
     def get_context_data(self, **kwargs):
@@ -35,16 +35,11 @@ class MessageCreateView(CreateView):
         return context
     
     
-    # def get_success_url(self):
-    #     return reverse_lazy('auditor-profile', kwargs={'pk': self.recipient.auditorprofile.id})
     
     def get_success_url(self):
-        if hasattr(self.recipient, 'auditorprofile'):
-            return reverse_lazy('auditor-profile', kwargs={'pk': self.recipient.auditorprofile.id})
-        elif hasattr(self.recipient, 'clientprofile'):
-            return reverse_lazy('client-profile', kwargs={'pk': self.recipient.clientprofile.id})
-        else:
-            # Por si acaso el usuario no tiene perfil (backup)
+        try:
+            return reverse_lazy('inbox')
+        except:
             return reverse_lazy('home')
     
 def inbox(request):
@@ -62,3 +57,15 @@ def single_message(request, pk):
     single_message.save()
     context = {'single_message': single_message}
     return render(request, 'inbox/single-message.html', context)
+
+
+
+# def get_success_url(self):
+#         if hasattr(self.recipient, 'auditorprofile'):
+#             return reverse_lazy('auditor-profile', kwargs={'pk': self.recipient.auditorprofile.id})
+        
+#         elif hasattr(self.recipient, 'clientprofile'):
+#             return reverse_lazy('client-profile', kwargs={'pk': self.recipient.clientprofile.id})
+#         else:
+#             # Por si acaso el usuario no tiene perfil (backup)
+#             return reverse_lazy('home')

@@ -1,10 +1,10 @@
 /* Estilos base para los botones */
 .btn  {
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 0.8rem;
     background-color: var(--mint-green);
     color: var(--light-grey);
     border: none;
-    border-radius: 8px;
+    border-radius: 999px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;

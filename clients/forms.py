@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import ClientProfile
+from .models import ClientProfile, Review
 
 class ClientProfileForm(ModelForm):
     class Meta:
@@ -11,4 +11,9 @@ class ClientProfileForm(ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'input'
-                
+            
+            
+class ReviewForm(ModelForm):
+    class Meta:
+        model = Review
+        fields = '__all__'

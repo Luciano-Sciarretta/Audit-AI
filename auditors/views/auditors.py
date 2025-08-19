@@ -9,7 +9,7 @@ class AuditorsView(ListView):
     model = AuditorProfile
     template_name = 'auditors/auditors.html'
     context_object_name = 'auditors'
-    paginate_by = 6
+    paginate_by = 8
     
     def get_queryset(self):
         return AuditorProfile.objects.all()

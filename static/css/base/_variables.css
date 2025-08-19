@@ -1,14 +1,15 @@
 :root {
 
-    --soft-mint-green: #B2F0E5;
+    --soft-mint-green: #bef3e99f;
     --mint-green: #00CC99;
     --light-grey: #F5F5F5;
     --dark-grey: #333333;
     --medium-grey: #70707057;
     --soft-yellow: #FFD700;
+    --light-blue: #3aadeb;
 
 
-    --alert-success: rgba(0, 204, 153, 0.438);
+    --alert-success: rgba(137, 239, 214, 0.438);
     --alert-error: rgba(231, 72, 72, 0.888);
 
 }

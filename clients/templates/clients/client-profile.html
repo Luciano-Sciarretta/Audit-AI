@@ -1,37 +1,62 @@
-{% extends 'base.html' %}
-
+div{% extends 'base.html' %}
 {% block content %}
+{% include 'navbar.html' %}
 
 <main class="main">
-    <div class="container">
-      <section class="profile">
-        <div class="go-back__container">
-          <a href="{% url  'chat' %}" class="go-back"><</a>
+  <div class="container">
+
+    <div class="row profile">
+      <div class="col-md-9">
+        <div class=" profile__main">
+          <div class="profile__flex">
+            <section class="profile__photo">
+              <img src="{{client.company_logo.url}}" class="profile__photo-image" alt="Foto del cliente">
+            </section>
+            <div class="profile__edit">
+              <a href="{%  url 'client-edit-account' client.id %}" class="btn">Edit Account</a>
+            </div>
+          </div>
+          <div class="profile__description">
+            <h4 class="profile__name"><strong>{{client.name}}</strong> <strong>{{client.surname}}</strong></h4>
+
+            <h6 class="profile__location">
+              <strong>
+                {% if client.location and client.country %}
+                {{ client.location }}, {{client.country}}
+                {% endif %}
+              </strong>
+            </h6>
+
+          </div>
         </div>
-        <h3 style="color:white;" class="text-center">Welcome to your profile {{ client.name|title }}.</h3>
-        
-        <div class="profile__section profile__section--header ">
-          <div class="profile__image-container">
-            <img class="profile__image" src="{{client.company_logo.url}}"
-              alt="Profile image of {{ client.name|title }}">
-          </div>
-  
-          <div class="profile__info--container ">
-            <h1 class="profile__name ">{{client.name}} </h1>
-            <p><strong>Document:</strong>{{client.document}}</p>
-            <p><strong>Phone Number:</strong>{{client.phone_number}}</p>
-            <p><strong>Email Address:</strong>{{client.email}}</p>
-            
-        
-          </div>
-          <div class="profile__info--edit">
-            <a  href="{% url 'client-edit-account' client.id %}" class="btn btn-edit">Edit Profile</a>
-          </div>
+        <div class="profile__about_me">
+          <h4>Company Info:</h4>
+          <ul>
+            <li>company_name:  {{client.company_name}}</li>
+            <li>document:  {{client.document}}</li>
+            <li>Cuit:  {{client.cuit}}</li>
+          </ul>
+        </div>
+        <div class="profile__education">
+          <h4>Contact Info:</h4>
+          <ul>
+            <li>phone_number: {{client.phone_number}}</li>
+            <li>Email: {{client.email}}</li>
+        </ul>
+
         </div>
 
-      </section>
+
+
+      </div>
+
+      <!------------------ COLUMNA DERECHA ------------------------------>
+      <div class="col-md-3   profile__sidebar">
+
+      </div>
+
     </div>
-  </main>
-  
+  </div>
+</main>
 
 {% endblock %}

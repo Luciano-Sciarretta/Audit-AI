@@ -8,4 +8,5 @@ urlpatterns = [
     path('', AuditorsView.as_view(), name = 'auditors'),
     path('auditor-profile/<str:pk>', auditor_profile, name = 'auditor-profile' ),
     path('auditor-edit-account/', auditor_account, name = 'auditor-edit-account'),
+    
 ]

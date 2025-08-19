@@ -17,7 +17,7 @@ def register_client(request):
                   login(request, user)
                 
                   messages.success(request, f"Registration successful! You are now logged. Welcome {user.username}!")
-                  return redirect('client-edit-account', pk = user.profile.id)
+                  return redirect('client-edit-account', pk = user.clientprofile.id)
             else:
                 print("Errors:", form.errors.as_data())
                 context = {'registration_type': 'client', 'form': form}

@@ -11,7 +11,7 @@ def auditor_account(request):
     
     try:
         auditor = AuditorProfile.objects.get(user = request.user) 
-        print(" AUDITOR::::", auditor)
+        
     except ObjectDoesNotExist as e:
         print("ObjectDoesNotExist:", str(e))  
         auditor = None
