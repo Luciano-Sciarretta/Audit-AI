@@ -9,26 +9,25 @@ def client_review(request):
     if request.method == 'POST':
         
         try:
-            # print("PRINT_1:",type(request.body))
             data = json.loads(request.body)
-            # print("PRINT_2:", data)
             client = request.user.clientprofile
-            # print("PRINT_3:",  client)
             auditor = AuditorProfile.objects.get(id = data['auditor_id'])
             vote = data['vote']
-            # print("PRINT_4:", auditor, vote)
-            review = Review(
+            review, created = Review.objects.get_or_create(
                 client_profile= client,
                 auditor_profile= auditor,
-                value= vote  
+                defaults={'value': vote}
             )
-            # print("Review:", review)
-            review.save()
-            review_count = Review.objects.filter(auditor_profile = auditor, value = 'up').count()
-            print("Count:", review_count)
+            if not created:
+                review.value = vote
+                review.save()
+            review_up_count = Review.objects.filter(auditor_profile = auditor, value = 'up').count()
+            review_down_count = Review.objects.filter(auditor_profile = auditor, value = 'down').count()
+            
             return JsonResponse({
                 'message': 'Todo joya',
-                'review_count': review_count
+                'review_up_count': review_up_count,
+                'review_down_count': review_down_count,
                 })
         except Exception as e:
             print("Error guardando review,", e)

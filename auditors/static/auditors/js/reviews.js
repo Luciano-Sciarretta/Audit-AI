@@ -7,34 +7,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const thumbUp = document.querySelector('.profile__thumb-up')
   const thumbDown = document.querySelector('.profile__thumb-down')
 
+  function manageVoteCount(auditorId, voteType) {
+    fetch(`${BASEDIR}clients/client-review/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrfToken
+      },
+      body: JSON.stringify({
+        auditor_id: auditorId,
+        vote: voteType
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        // console.log("Data:", data)
+        if (!data.error) {
+          const counterUp = document.querySelector('#thumb-up-count')
+          const counterDown = document.querySelector('#thumb-down-count')
+          counterUp.textContent = data.review_up_count;
+          counterDown.textContent = data.review_down_count;
+        }
+      })
+      .catch(error => console.error("Fetch error:", error))
+  }
 
   if (thumbUp) {
     thumbUp.addEventListener('click', () => {
-  
-      const auditorId = thumbUp.getAttribute('data-auditor')
-      const vote = 'up'
+      const auditorId = thumbUp.dataset.auditor
+      manageVoteCount(auditorId, 'up')
+    })
+  }
 
-      fetch(`${BASEDIR}clients/client-review/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': csrfToken
-        },
-        body: JSON.stringify({
-          auditor_id : auditorId,
-          vote : vote
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log("Data:", data)
-        if (!data.error) {
-          const counter = document.querySelector('#thumb-up-count')
-          console.log("Review_count:", data.review_count)
-          counter.textContent = data.review_count;
-        }
-      })
-
+  if (thumbDown) {
+    thumbDown.addEventListener('click', () => {
+      const auditorId = thumbDown.dataset.auditor
+      manageVoteCount(auditorId, 'down')
     })
   }
 })

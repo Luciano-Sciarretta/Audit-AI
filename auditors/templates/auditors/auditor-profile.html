@@ -26,7 +26,7 @@
 
           </div>
           <div class="profile__description">
-            <h4 class="profile__name"><strong>{{auditor.name}}</strong> <strong>{{auditor.surname}}</strong></h4>
+            <h4 class="profile__name"><strong>{{auditor.name|title}}</strong> <strong>{{auditor.surname|title}}</strong></h4>
             <p>{{auditor.competency|title}} Auditor</p>
             <h6 class="profile__location">
               <strong>
@@ -81,7 +81,7 @@
               {{ reviews_up }}
             </span>
 
-            <span class="profile__thumb-up"  data-auditor = "{{ auditor.id }}" >
+            <span class="profile__thumb-up"  data-vote-type="up"  data-auditor="{{ auditor.id }}" >
               <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 fill="var(--light-blue)" viewBox="0 0 24 24">
                 <path
@@ -90,8 +90,11 @@
             </span>
            
 
+            <span id="thumb-down-count" >
+              {{ reviews_down }}
+            </span>
 
-            <span class="profile__thumb-down" data-auditor = "{{ auditor.id }}" >
+            <span class="profile__thumb-down"  data-vote-type="down"  data-auditor="{{ auditor.id }}" >
               
               <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 fill="var(--alert-error)" viewBox="0 0 24 24" style="transform: scaleY(-1);">

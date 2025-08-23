@@ -9,7 +9,7 @@
       for (let cookie of cookies) {
         if (cookie.startsWith(name + '=')) {
           cookieValue = cookie.substring(name.length + 1)
-          console.log("CSRF_TOKEN:", cookieValue)
+          
           break;
         }
       }
