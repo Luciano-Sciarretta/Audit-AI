@@ -1,0 +1,29 @@
+.singleMessage {
+    display: block;
+    /* justify-content: space-between;
+    align-items: center; */
+    background-color: var(--medium-grey);
+    padding: 2.5rem;
+    color: var(--light-grey);
+    max-width: 100%;
+    overflow-x: hidden
+}
+
+
+.singleMessage__author {
+    color: var(--mint-green);
+    text-decoration: none;
+}
+
+.singleMessage__date {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+}
+
+
+.singleMessage__body {
+    word-wrap: break-word; 
+    white-space: normal; 
+    margin-bottom: 3rem;
+    
+  }

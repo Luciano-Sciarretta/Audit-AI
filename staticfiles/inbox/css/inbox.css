@@ -1,0 +1,23 @@
+.inbox__title {
+    color: var(--mint-green)
+}
+
+.messages {
+    background-color: var(--medium-grey);
+    list-style: none;
+    padding: 2rem;
+    border-radius: 7px;
+    
+}
+
+.message a {
+    display: flex;
+    justify-content: space-between;
+    color: var(--soft-mint-green);
+    text-decoration: none;
+
+}
+
+.message--unread a {
+    color: var(--mint-green);
+}

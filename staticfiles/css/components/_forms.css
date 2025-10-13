@@ -1,0 +1,114 @@
+.form-box {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--medium-grey);
+    border-radius: 12px;
+    border: 1px solid var(--light-grey);
+    
+
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-header h1 {
+    font-size: 2rem;
+    color: var(--mint-green);
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    font-size: 1rem;
+    color: var(--light-grey);
+
+}
+
+
+.form-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--light-grey);
+}
+
+.field-group label {
+    font-size: 0.9rem;
+    color: var(--light-gray);
+    font-weight: 500;
+
+}
+
+.field-group .input {
+    padding: 0.75rem;
+    border: 1px solid var(--light-gray);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--light-grey) !important;
+    transition: border-color 0.3s ease;
+    background-color: var(--medium-grey) !important;
+    background-clip: padding-box !important;
+    box-shadow: inset 0 0 0 1000px var(--medium-grey) !important;
+
+}
+
+
+
+
+.field-group .input:focus {
+    border-color: var(--mint-green) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 1px var(--mint-green) !important;
+}
+
+.action-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+
+.action-group a {
+    color: var(--light-grey);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.action-group a:hover {
+    color: var(--mint-green);
+}
+
+/* Estilos para la sección de alternativa (registro) */
+.alt-section {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--light-grey);
+}
+
+.alt-section p {
+    font-size: 0.9rem;
+    color: var(--medium-gray);
+    margin-bottom: 0.5rem;
+}
+
+.alt-section a {
+    color: var(--mint-green);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.alt-section a:hover {
+    color: darken(var(--mint-green), 10%);
+}
