@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
       .then(response => response.json())
       .then(data => {
-        // console.log("Data:", data)
+        
         if (!data.error) {
           const counterUp = document.querySelector('#thumb-up-count')
           const counterDown = document.querySelector('#thumb-down-count')

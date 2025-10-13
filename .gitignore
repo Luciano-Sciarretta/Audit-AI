@@ -5,8 +5,7 @@ __pycache__/
 *.pyd
 
 # Base de datos SQLite
-db.sqlite3
-*.db
+
 
 venv/
 # Migraciones compiladas

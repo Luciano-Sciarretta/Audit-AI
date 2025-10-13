@@ -17,7 +17,7 @@ class AuditorProfile(models.Model):
     phone = models.CharField(max_length=50)
     bio = models.TextField(null=True, blank=True)
     profile_image = models.ImageField(  upload_to='auditors/profile_images', default= 'auditors/profile_images/default.png',  null=True, blank=True)
-    country = models.ForeignKey("Country", on_delete=models.SET_NULL, max_length=80, null = True )
+    country = models.ForeignKey("Country", on_delete=models.SET_NULL, null = True )
     location = models.CharField( max_length=80 )
     competency = models.CharField(max_length= 50, choices= AUDITOR_ROLE_CHOICES, blank=True, null=True)
     

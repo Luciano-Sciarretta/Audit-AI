@@ -17,6 +17,7 @@ class ClientProfile(models.Model):
     company_logo = models.ImageField(  upload_to='clients/profile_images', default= 'auditors/profile_images/default.png',  null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     #company_website
+    #puesto en la empresa
     
     def __str__(self):
         return self.name if self.name else  self.user.email

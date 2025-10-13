@@ -85,18 +85,28 @@ WSGI_APPLICATION = 'AuditAI.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+USE_SQLITE = True
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'auditai_db',
-        'USER': 'postgres',
-        'PASSWORD': 'doblea27641512',
-        'HOST': 'localhost',
-        'PORT': '5432',
+if USE_SQLITE:
+    print("⚙️ Usando base de datos SQLite (modo Render o pruebas)")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    print("⚙️ Usando base de datos PostgreSQL (modo local)")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'auditai_db',
+            'USER': 'postgres',
+            'PASSWORD': 'doblea27641512',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 
 
