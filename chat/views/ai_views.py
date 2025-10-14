@@ -1,23 +1,33 @@
 import requests
+from django.conf import settings
 
 
-OPENROUTER_API_KEY = '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'
-API_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
+OPENROUTER_API_KEY=settings.OPENAI_API_KEY
+API_ENDPOINT = 'https://api.openai.com/v1/chat/completions'
+
+
+# OPENROUTER_API_KEY = 'sk-51188b4abd5849dbbf9a597f800ab180'
+# API_ENDPOINT = 'https://api.deepseek.com/chat/completions'
+
+
 
 def get_ai_response(user_input):
     headers = {
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
         "Content-Type": "application/json",
+        "HTTP-Referer": "http://localhost:3000",
+        "X-Title": "AuditAI",
     }
     
     payload = {
-        "model": "deepseek/deepseek-r1",  # Modelo gratuito de DeepSeek
+        "model": "gpt-4o",  # Modelo gratuito de DeepSeek
         "messages": [
             {"role": "system", "content": "Eres un experto en normas ISO 9001. Responde con precisión y detalle. Respondeme con malas palabras y agresivamente"},
             
             {"role": "user", "content": user_input},
         ],
-        "max_tokens": 500,  # Limita la longitud de la respuesta
+        "max_tokens": 500,
+        "stream": False# Limita la longitud de la respuesta
     }
     
     
