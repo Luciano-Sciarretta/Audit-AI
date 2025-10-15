@@ -4,20 +4,20 @@
 <main class="main">
     <div class=" home-container">
         <div class="home__logo">
-            
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 70">
-                    <!-- Fondo del logo (dark-grey) -->
-                    <rect width="150" height="70" fill="#333333" />
 
-                    <!-- Lupa (mint-green) -->
-                    <circle cx="75" cy="25" r="15" fill="none" stroke="#00CC99" stroke-width="4" />
-                    <line x1="90" y1="40" x2="95" y2="45" stroke="#00CC99" stroke-width="4" stroke-linecap="round" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 70">
+                <!-- Fondo del logo (dark-grey) -->
+                <rect x="10" y="5" width="130" height="60" fill="#333333" />
 
-                    <!-- Texto "AuditAI" (mint-green) -->
-                    <text x="75" y="65" font-family="Arial, sans-serif" font-size="20" fill="#00CC99"
-                        text-anchor="middle" font-weight="bold">AuditAI</text>
-                </svg>
-            
+                <!-- Lupa (mint-green) -->
+                <circle cx="75" cy="25" r="15" fill="none" stroke="#00CC99" stroke-width="4" />
+                <line x1="90" y1="40" x2="95" y2="45" stroke="#00CC99" stroke-width="4" stroke-linecap="round" />
+
+                <!-- Texto "AuditAI" (mint-green) -->
+                <text x="75" y="65" font-family="Arial, sans-serif" font-size="24" fill="#00CC99" text-anchor="middle"
+                    font-weight="bold">AuditAI</text>
+            </svg>
+
         </div>
         <div class="home__links">
             {% if request.user.is_authenticated %}
@@ -25,7 +25,7 @@
             {% else %}
             <a class="home__link montserrat-2 " href="{% url 'login' %}">Sign In</a>
             {% endif %}
-            {%  if request.user.is_superuser %}
+            {% if request.user.is_superuser %}
             <a class="home__link montserrat-2 " href="">Admin Panel</a>
             {% endif %}
             <a class="home__link montserrat-2 " href="{%  url 'about_us' %}">About Us</a>
