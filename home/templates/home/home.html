@@ -2,7 +2,7 @@
 
 {% block content %}
 <main class="main">
-    <div class="container home-container">
+    <div class=" home-container">
         <div class="home__logo">
             
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 70">
@@ -25,7 +25,9 @@
             {% else %}
             <a class="home__link montserrat-2 " href="{% url 'login' %}">Sign In</a>
             {% endif %}
+            {%  if request.user.is_superuser %}
             <a class="home__link montserrat-2 " href="">Admin Panel</a>
+            {% endif %}
             <a class="home__link montserrat-2 " href="{%  url 'about_us' %}">About Us</a>
             <a class="home__link montserrat-2 " href="{% url 'auditor-application' %}">Apply as an Auditor</a>
 
