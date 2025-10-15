@@ -4,6 +4,7 @@
     color: var(--mint-green);
     padding: 4rem 0;
     width: 100%;
+    max-width: 70rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,11 +54,12 @@
     }
 
     .home__logo svg {
-        width: 100%;
+        width: 23rem;
         height: auto;
     }
 
     .home__links {
+        flex-wrap: wrap;
         margin-top: 4rem;
         gap: 2rem;
     }
@@ -73,7 +75,7 @@
     }
 
     .home__logo svg {
-        width: 31rem;
+        width: 42rem;
         height: auto;
     }
 }
@@ -86,7 +88,7 @@
     }
 
     .home__logo svg {
-        width: 35rem;
+        width: 45rem;
         height: auto;
     }
 }
