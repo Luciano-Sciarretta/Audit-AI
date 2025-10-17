@@ -1,15 +1,15 @@
 
+
 .chat {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    max-width: 52rem;
+    max-width: 58rem;
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    height: 68vh; 
-    background-color: aliceblue;
+    height: 48vh; 
 }
 
 .chat__history {
@@ -17,7 +17,8 @@
     color: var(--light-grey);
     padding:0rem 2rem;
     height: 14rem;
-    background-color: rgb(3, 30, 99);
+    
+    
 }
 
 
@@ -27,7 +28,7 @@
 
 .chat__subtitle {
     color: var(--light-grey);
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .chat__form {
@@ -38,7 +39,7 @@
     padding: 0rem 2rem;
     position: fixed;
     bottom: 1rem;
-    z-index: 20;
+    z-index: 120;
 }
 
 .chat__input-group {
@@ -72,3 +73,16 @@
         background-color: #00A378;
     }
 }
+
+
+
+
+/* MEDIA QUERIES  */
+
+@media (max-width: 768px) {
+    .chat {
+        height: 50vh;
+    }
+}
+
+
