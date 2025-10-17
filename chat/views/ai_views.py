@@ -22,7 +22,7 @@ def get_ai_response(user_input):
     payload = {
         "model": "gpt-4o",  # Modelo gratuito de DeepSeek
         "messages": [
-            {"role": "system", "content": "Eres un experto en normas ISO 9001. Responde con precisión y detalle. Respondeme con malas palabras y agresivamente"},
+            {"role": "system", "content": "Eres un experto en normas ISO 9001. Responde con precisión y detalle."},
             
             {"role": "user", "content": user_input},
         ],

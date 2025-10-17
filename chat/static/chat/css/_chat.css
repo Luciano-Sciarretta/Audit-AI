@@ -8,7 +8,8 @@
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    height: 68%; 
+    height: 68vh; 
+    background-color: aliceblue;
 }
 
 .chat__history {
@@ -16,6 +17,7 @@
     color: var(--light-grey);
     padding:0rem 2rem;
     height: 14rem;
+    background-color: rgb(3, 30, 99);
 }
 
 
