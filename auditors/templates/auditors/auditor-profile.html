@@ -64,7 +64,7 @@
       <!------------------ COLUMNA DERECHA ------------------------------>
       <div class="col-md-3   profile__sidebar">
         <section class="profile__iso_standars">
-          <h5 class="profile__iso_standars-title">Iso Standards:</h5>
+          <h5 class="profile__iso_standars-title">Iso Standards</h5>
           <ul>
             {% for standard in auditor.iso_standards.all %}
             <li>{{standard}}</li>
@@ -74,8 +74,16 @@
         </section>
 
         <section class="profile__reviews">
-          <h5>What Clients Say About This Auditor:</h5>
-          <div class="profile__thumbs">
+          <a href="{% url 'auditor_audits' auditor.id %}">
+          <h5><h5>What Clients Say About This Auditor</h5></h5>
+       
+          </a>
+        </section>
+
+        <section class="profile__vote">
+          <h5 class="profile__vote-text">Rate this auditor</h5>
+
+           <div class="profile__thumbs">
 
             <span id="thumb-up-count" >
               {{ reviews_up }}

@@ -8,7 +8,7 @@
 }
 
 /*Columna izquierda*/
-.profile__main, .profile__education, .profile__licenses, .profile__about_me, .profile__iso_standars {
+.profile__main, .profile__education, .profile__licenses, .profile__about_me, .profile__iso_standars, .profile__reviews, .profile__vote {
   padding: 2rem;
   background-color: var(--medium-grey);
   border-radius: 10px;
@@ -52,7 +52,7 @@
 
 /* Columna derecha*/
 
-.profile__iso_standars, .profile__reviews{
+.profile__iso_standars, .profile__reviews, .profile__vote{
   color: var(--mint-green);
   padding: 2rem;
   background-color: var(--medium-grey);
@@ -62,14 +62,18 @@
 .profile__reviews {
   display: flex;
   flex-direction: column;
-  
+
+}
+
+.profile__reviews a  {
+  text-decoration: none;
+  color: var(--mint-green);
 }
 
 
 .profile__thumbs{
   margin-top: 2rem;
   display: flex;
-  
   align-items: flex-end;
 }
 

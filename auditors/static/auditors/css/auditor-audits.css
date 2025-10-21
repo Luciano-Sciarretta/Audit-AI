@@ -1,0 +1,44 @@
+.auditor-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.auditor-info div {
+    background-color: var(--medium-grey);
+    border-radius: 4px;
+    margin: 0 1rem;
+    width: 38rem;
+    height: 22rem;
+    padding: 1rem;
+}
+
+.auditor-info h3 {
+    color: var(--mint-green);
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .auditor-info{
+        flex-direction: column;
+    }
+    .auditor-info div {
+        margin: 1rem 0;
+        max-width: 27rem;
+    }
+   
+}
+
+
+@media (min-width: 768px) and (max-width: 991px)  {}
+
+
+@media (min-width: 992px){}
+
+
+@media (min-width: 1200px){}
