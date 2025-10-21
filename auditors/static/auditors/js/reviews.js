@@ -1,8 +1,4 @@
-import { getCSRFToken } from '/static/js/utils.js';
-import { BASEDIR } from '/static/js/utils.js';
-
 document.addEventListener('DOMContentLoaded', () => {
-
   const csrfToken = getCSRFToken()
   const thumbUp = document.querySelector('.profile__thumb-up')
   const thumbDown = document.querySelector('.profile__thumb-down')
