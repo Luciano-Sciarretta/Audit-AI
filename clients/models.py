@@ -1,13 +1,13 @@
 from django.db import models
 from authentication.models import CustomUser
 from django.core.exceptions import ValidationError
-from auditors.models import Country, AuditorProfile
+
 
 class ClientProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     name = models.CharField(max_length= 200, blank= True,  null=True)
     surname = models.CharField(max_length= 200, blank= True,  null=True)
-    country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True, blank=True)
+    country = models.ForeignKey('auditors.Country', on_delete=models.SET_NULL, null=True, blank=True)
     location = models.CharField(max_length=120, null=True, blank=True)
     company_name = models.CharField(max_length=200, blank= True,  null=True)
     phone_number = models.CharField(max_length=200, blank=True)
@@ -29,7 +29,7 @@ class Review(models.Model):
     ]
     
     client_profile = models.ForeignKey(ClientProfile, on_delete=models.CASCADE)
-    auditor_profile = models.ForeignKey(AuditorProfile, on_delete=models.CASCADE)
+    auditor_profile = models.ForeignKey('auditors.AuditorProfile', on_delete=models.CASCADE)
     value = models.CharField(max_length= 10, choices=VOTE_OPTIONS )
     body = models.TextField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
