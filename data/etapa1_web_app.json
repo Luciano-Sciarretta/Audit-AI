@@ -1,0 +1,59 @@
+{
+  "informacion_general": {
+    "actividad_principal": "",
+    "actividad_principal_validada": false,
+    "mercados_atendidos": "",
+    "mercados_atendidos_validados": false,
+    "cantidad_empleados": 0,
+    "cantidad_roles_estimados": 0,
+    "sedes": [],
+    "actividades_a_certificar": [],
+    "valores_empresa": "",
+    "tecnologia_clave": "",
+    "regulaciones_aplicables": [],
+    "tendencias_mercado": "",
+    "clientes_principales": [],
+    "expectativas_clientes": "",
+    "proveedores_criticos": [],
+    "normativas_regulatorias": [],
+    "procesos_incluidos_alcance": [],
+    "ubicaciones_incluidas": [],
+    "exclusiones": [],
+    "justificacion_exclusion": "",
+    "redaccion_alcance": ""
+  },
+  "estado_actual_sgc": {
+    "certificaciones_previas": [],
+    "documentos_existentes": [],
+    "procesos_identificados": [],
+    "madurez_sgc": "incipiente",
+    "madurez_sgc_justificacion": "",
+    "cobertura_documentacion_total": 0.0
+  },
+  "expectativas_proyecto": {
+    "motivo_certificacion": "",
+    "plazo_deseado_certificacion": 0,
+    "beneficios_esperados": [],
+    "preocupaciones_principales": [],
+    "nivel_compromiso_direccion": "medio",
+    "nivel_compromiso_justificacion": ""
+  },
+  "roles_equipo": {
+    "responsable_sgc_designado": false,
+    "responsable_sgc_nombre": "",
+    "responsable_sgc_cargo": "",
+    "equipo_proyecto_definido": false,
+    "miembros_equipo": [],
+    "formacion_previa_equipo": ""
+  },
+  "plan_preliminar": {
+    "diagnostico_fortalezas_debilidades": "",
+    "cronograma_inicial": "",
+    "recursos_identificados": {},
+    "riesgos_iniciales_identificados": false
+  },
+  "estado_proyecto": 1,
+  "fecha_inicio": "2025-10-24T15:14:43.347546",
+  "fecha_actualizacion": "2025-10-24T15:14:48.506408",
+  "completitud_porcentaje": 0.0
+}

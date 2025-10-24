@@ -11,8 +11,18 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 OPENAI_API_ENDPOINT = 'https://api.openai.com/v1/chat/completions'
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# Configuración para AuditAI-Fer
+AUDITAI_FER_BASE_DIR = os.path.join(BASE_DIR, 'AuditAI-Fer')
+AUDITAI_GENERATED_FILES_PATH = os.path.join(AUDITAI_FER_BASE_DIR, 'generated_files')
+
+# Crear directorio si no existe
+os.makedirs(AUDITAI_GENERATED_FILES_PATH, exist_ok=True)
+
+
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'audit-ai-fl73.onrender.com']
 # Quick-start development settings - unsuitable for production
