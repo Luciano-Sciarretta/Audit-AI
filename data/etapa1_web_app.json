@@ -1,7 +1,7 @@
 {
   "informacion_general": {
-    "actividad_principal": "",
-    "actividad_principal_validada": false,
+    "actividad_principal": "Es una empresa de pesas rusas",
+    "actividad_principal_validada": true,
     "mercados_atendidos": "",
     "mercados_atendidos_validados": false,
     "cantidad_empleados": 0,
@@ -54,6 +54,6 @@
   },
   "estado_proyecto": 1,
   "fecha_inicio": "2025-10-24T15:14:43.347546",
-  "fecha_actualizacion": "2025-10-24T15:14:48.506408",
-  "completitud_porcentaje": 0.0
+  "fecha_actualizacion": "2025-10-30T16:42:43.228579",
+  "completitud_porcentaje": 18.2
 }
