@@ -18,45 +18,59 @@ etapa1_path = os.path.join(agents_path, 'etapa1')
 sys.path.insert(0, base_path)
 sys.path.insert(0, agents_path) 
 sys.path.insert(0, etapa1_path)
-print("PATH2:", sys.path)
+
+print(f"📍 Paths configurados. Base: {base_path}")
+
+
+#  IMPORTACIONES E INICIALIZACIÓN UNA SOLA VEZ
+agente_principal = None
+file_agent = None
+
+
+try:
+    from etapa1_agent_profundo import Etapa1AgenteProfundo
+    agente_principal = Etapa1AgenteProfundo()
+    print("✅ Agente principal cargado y listo")
+except Exception as e:
+    print(f"❌ Agente principal no disponible:  {e}")
+    
+    
+try:
+    from agents.file_agent import FileManagerAgent  
+    file_agent = FileManagerAgent()  # ← UNA SOLA INSTANCIA
+    print("✅ FileManagerAgent cargado y listo")
+except Exception as e:
+    print(f"❌ FileManagerAgent no disponible: {e}")
+
 
 def get_ai_response(user_input):
     print(f"🔍 Procesando: {user_input}")
     
-    # PRIMERO: Intentar importación directa del agente principal
-    try:
-        print("🔄 Intentando importación directa...")
-        
-        # Intentar importación directa
-        from etapa1_agent_profundo import Etapa1AgenteProfundo
-        print("✅ Etapa1AgenteProfundo importado")
-        
-        agent = Etapa1AgenteProfundo()
-        print("✅ Agente instanciado")
-        
-        respuesta = agent.execute(user_input, client_id="web_app")
-        print(f"✅ Respuesta: {respuesta[:200]}...")
-        return respuesta
-        
-    except Exception as e:
-        print(f"❌ Error con agente principal: {e}")
-        traceback.print_exc()
-        # Limpiar paths para siguiente intento
-        for path in [base_path, agents_path, etapa1_path]:
-            if path in sys.path:
-                sys.path.remove(path)
+    if agente_principal:
+        try:
+            print("🔄 Usando agente principal")
+       
+            respuesta = agente_principal.execute(user_input, client_id="web_app")
+            print(f"✅ Respuesta: {respuesta[:200]}...")
+            return respuesta
+            
+        except Exception as e:
+            print(f"❌ Error con agente principal: {e}")
+            traceback.print_exc()
+         
 
     # SEGUNDO: FileManagerAgent como fallback
-    try:
-        print("🔄 Intentando FileManagerAgent...")
-        from agents.file_agent import FileManagerAgent
-        agent = FileManagerAgent()
-        respuesta = agent.execute(user_input)
-        return respuesta
-    except Exception as e:
-        print(f"❌ Error con FileManagerAgent: {e}")
+    if file_agent: 
+        try:
+            print("🔄 Intentando FileManagerAgent...")
+            
+            respuesta = file_agent.execute(user_input)
+            return respuesta
+        
+        except Exception as e:
+            print(f"❌ Error con FileManagerAgent: {e}")
 
-    # TERCERO: OpenAI como último recurso
+        # TERCERO: OpenAI como último recurso
     print("🔄 Usando OpenAI fallback...")
     return get_openai_response(user_input)
 
