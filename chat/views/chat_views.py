@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
-import requests
 from ..models import ClientInput, AIResponse
 from .ai_views import get_ai_response
 
@@ -10,7 +8,7 @@ from .ai_views import get_ai_response
 def chat_view(request):
     
     # Mostrar el historial de entradas del usuario
-    inputs = ClientInput.objects.filter(user=request.user).order_by('-created_at')
+    inputs = ClientInput.objects.filter(user=request.user).order_by('-created_at')[:50]
     
     return render(request, 'chat/chat.html', {'inputs': inputs, 'hide_footer': True})
 

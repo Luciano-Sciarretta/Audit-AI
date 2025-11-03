@@ -11,7 +11,7 @@ os.environ["OPENAI_API_KEY"] = settings.OPENAI_API_KEY
 
  # Rutas absolutas
 base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../AuditAI-Fer'))
-print("base path", base_path)
+
 agents_path = os.path.join(base_path, 'agents')
 etapa1_path = os.path.join(agents_path, 'etapa1')
 
