@@ -15,13 +15,18 @@
     <div class="chat__history montserrat-2">
       {% for input in inputs %}
       <div class="chat__messages">
-        
+
+        <p><strong>{{ input.user.clientprofile.name.capitalize }}:</strong></p>
+        <p>{{ input.client_input }}</p>
+
+
         {% for response in input.airesponse_set.all %}
         <p><strong>AuditAI:</strong></p>
         <p>{{ response.response_text }}</p>
         {% endfor %}
-        <p><strong>{{ input.user.clientprofile.name.capitalize }}:</strong></p>
-        <p>{{ input.client_input }}</p>
+
+
+
       </div>
       {% empty %}
       <p>No messages yet.</p>
@@ -30,8 +35,8 @@
     <form action="{% url 'client_input' %}" method="POST" class="chat__form" id="chatForm">
       {% csrf_token %}
       <div class="chat__input-group">
-        <textarea class="chat__textarea montserrat-2" name="client_input" placeholder="Ask about ISO standards..." id="messageInput"
-          rows="3"></textarea>
+        <textarea class="chat__textarea montserrat-2" name="client_input" placeholder="Ask about ISO standards..."
+          id="messageInput" rows="3"></textarea>
         <button class="chat__button montserrat-2 btn" type="submit">Send</button>
       </div>
     </form>
