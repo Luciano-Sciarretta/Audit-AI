@@ -8,7 +8,7 @@ from .ai_views import get_ai_response
 def chat_view(request):
     
     # Mostrar el historial de entradas del usuario
-    inputs = ClientInput.objects.filter(user=request.user).order_by('-created_at')[:50]
+    inputs = ClientInput.objects.filter(user=request.user).order_by('created_at')[:50]
     
     return render(request, 'chat/chat.html', {'inputs': inputs, 'hide_footer': True})
 
@@ -40,5 +40,5 @@ def client_input(request):
             #     'ai_response': ai_response_text,
             # })
             return redirect('chat')
-    return render(request, 'chat/chat.html')
+   
         
