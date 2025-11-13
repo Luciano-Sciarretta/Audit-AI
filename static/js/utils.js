@@ -20,5 +20,4 @@ function getCSRFToken() {
 
 const BASEDIR = 'http://127.0.0.1:8000/'
 
-const token = getCSRFToken()
-console.log("Token:", token)
+
