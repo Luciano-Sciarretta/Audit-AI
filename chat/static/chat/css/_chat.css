@@ -75,6 +75,57 @@
 }
 
 
+.client-chat {
+    background-color: var(--medium-grey);
+    border-radius: 25px;
+    padding: 1rem;
+    margin: 2rem 0;
+}
+
+.client-paragraph {
+    font-weight: 600;
+}
+
+
+
+
+
+/* SPINNER*/
+
+.spinner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0;
+    padding: 8px 12px;
+    background: var(--dark-grey);
+    border-radius: 8px;
+    border-left: 3px solid var(--mint-green);
+}
+
+.spinner-text {
+    margin: 0;
+    color: var(--mint-green);
+    font-style: italic;
+    font-size: 14px;
+}
+
+.spinner-text::after {
+    content: '';
+    animation: elastic-dots 1.8s infinite;
+}
+
+@keyframes elastic-dots {
+    0% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+    100% { content: ''; }
+}
+
+
+
+
 
 
 /* MEDIA QUERIES  */
