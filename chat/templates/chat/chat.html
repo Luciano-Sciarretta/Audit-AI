@@ -8,50 +8,38 @@
 {% if not request.user.is_auditor%}
 <main class="main ">
 
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-10 col-lg-8">
-        <h1 class=" chat__title  chat__title montserrat-1 text-center">Welcome {% if request.user.is_authenticated %}
-          {{request.user.clientprofile.name}} {% endif %}to AuditAI.</h1>
-        <h4 class="chat__subtitle  montserrat-2 text-center"> Our AI is ready to assist you with ISO standards.</h4>
+  <h1 class=" chat__title  chat__title montserrat-1 text-center">Welcome {% if request.user.is_authenticated %}
+    {{request.user.clientprofile.name}} {% endif %}to AuditAI.</h1>
+  <h4 class="chat__subtitle  montserrat-2 text-center"> Our AI is ready to assist you with ISO standards.</h4>
+  <div class="container chat">
+    <div class="chat__history montserrat-2">
+      {% for input in inputs %}
+      <div class="chat__messages">
+
+        <p><strong>{{ input.user.clientprofile.name.capitalize }}:</strong></p>
+        <p>{{ input.client_input }} </p>
+
+
+        {% for response in input.airesponse_set.all %}
+        <p><strong>AuditAI:</strong></p>
+        <p>{{ response.response_text }}</p>
+        {% endfor %}
+
+
+
       </div>
+      {% empty %}
+      <p>No messages yet.</p>
+      {% endfor %}
     </div>
-
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-10 col-lg-8">
-        <div class=" chat">
-          <div class="chat__history montserrat-2">
-            {% for input in inputs %}
-            <div class="chat__messages">
-
-              <div class="client-chat">
-                <p><strong>{{ input.user.clientprofile.name.capitalize }}:</strong></p>
-                <p class="client-paragraph">{{ input.client_input }} </p>
-              </div>
-
-              {% for response in input.airesponse_set.all %}
-              <p><strong>AuditAI:</strong></p>
-              <p>{{ response.response_text }}</p>
-              {% endfor %}
-
-
-
-            </div>
-            {% empty %}
-            <p>No messages yet.</p>
-            {% endfor %}
-          </div>
-          <form action="{% url 'client_input' %}" method="POST" class="chat__form" id="chatForm">
-            {% csrf_token %}
-            <div class="chat__input-group">
-              <textarea class="chat__textarea montserrat-2" name="client_input" placeholder="Ask about ISO standards..."
-                id="chatInput" rows="3"></textarea>
-              <button id="chatButton" class="chat__button montserrat-2 btn" type="submit">Send</button>
-            </div>
-          </form>
-        </div>
+    <form action="{% url 'client_input' %}" method="POST" class="chat__form" id="chatForm">
+      {% csrf_token %}
+      <div class="chat__input-group">
+        <textarea class="chat__textarea montserrat-2" name="client_input" placeholder="Ask about ISO standards..."
+          id="chatInput" rows="3"></textarea>
+        <button id="chatButton"  class="chat__button montserrat-2 btn" type="submit">Send</button>
       </div>
-    </div>
+    </form>
   </div>
 </main>
 {% else %}
@@ -61,7 +49,7 @@
 
 {% endblock %}
 {% block javascript %}
-<script type='module' src="{% static 'chat/js/main.js' %}"></script>
+<script  type='module' src="{% static 'chat/js/main.js' %}"></script>
 {% endblock %}
 
 

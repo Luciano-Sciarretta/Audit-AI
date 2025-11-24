@@ -2,6 +2,8 @@ import sys
 import os
 from django.conf import settings
 from dotenv import load_dotenv
+import requests
+import traceback
 
 # Cargar variables de entorno desde el archivo .env
 load_dotenv()
@@ -16,27 +18,92 @@ else:
     print("⚠️ ADVERTENCIA: No se encontró OPENAI_API_KEY en las variables de entorno")
     raise ValueError("OPENAI_API_KEY no está configurada en el archivo .env")
 
-base_path = os.path.join(os.path.dirname(__file__), '../../AuditAI-Fer')
+# Rutas absolutas
+base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../AuditAI-Fer'))
+agents_path = os.path.join(base_path, 'agents')
+etapa1_path = os.path.join(agents_path, 'etapa1')
+
 sys.path.insert(0, base_path)
+sys.path.insert(0, agents_path) 
+sys.path.insert(0, etapa1_path)
+
 
 print(f"📍 Paths configurados. Base: {base_path}")
 
-# CARGAR SUPERVISOR
-supervisor_agent = None
+
+#  IMPORTACIONES E INICIALIZACIÓN UNA SOLA VEZ
+agente_principal = None
+file_agent = None
+
 
 try:
-    from supervisor import SupervisorAgent
-    supervisor_agent = SupervisorAgent()
-    print("✅ SupervisorAgent cargado")
+    from etapa1_agent_profundo import Etapa1AgenteProfundo
+    agente_principal = Etapa1AgenteProfundo()
+    print("✅ Agente principal cargado y listo")
 except Exception as e:
-    print(f"❌ Error cargando supervisor: {e}")
-    import traceback
-    traceback.print_exc()
+    print(f"❌ Agente principal no disponible:  {e}")
+    
+    
+try:
+    from agents.file_agent import FileManagerAgent  
+    file_agent = FileManagerAgent()  # ← UNA SOLA INSTANCIA
+    print("✅ FileManagerAgent cargado y listo")
+except Exception as e:
+    print(f"❌ FileManagerAgent no disponible: {e}")
+
 
 def get_ai_response(user_input):
-    if supervisor_agent:
+    print(f"🔍 Procesando: {user_input}")
+    
+    if agente_principal:
         try:
-            return supervisor_agent.execute(user_input)
+            print("🔄 Usando agente principal")
+       
+            respuesta = agente_principal.execute(user_input, client_id="web_app")
+            print(f"✅ Respuesta: {respuesta[:200]}...")
+            return respuesta
+            
         except Exception as e:
-            return f"⚠️ Error del sistema: {str(e)}"
-    return "🔧 Sistema no disponible"
+            print(f"❌ Error con agente principal: {e}")
+            traceback.print_exc()
+         
+
+    # SEGUNDO: FileManagerAgent como fallback
+    if file_agent: 
+        try:
+            print("🔄 Intentando FileManagerAgent...")
+            
+            respuesta = file_agent.execute(user_input)
+            return respuesta
+        
+        except Exception as e:
+            print(f"❌ Error con FileManagerAgent: {e}")
+
+        # TERCERO: OpenAI como último recurso
+    print("🔄 Usando OpenAI fallback...")
+    return get_openai_response(user_input)
+
+def get_openai_response(user_input):
+    """Tu función original"""
+    headers = {
+        "Authorization": f"Bearer {settings.OPENAI_API_KEY}",
+        "Content-Type": "application/json",
+    }
+    
+    payload = {
+        "model": "gpt-4o",
+        "messages": [
+            {"role": "system", "content": "Eres un experto en normas ISO 9001. Responde con precisión y detalle."},
+            {"role": "user", "content": user_input},
+        ],
+        "max_tokens": 500,
+        "stream": False
+    }
+    
+    try:
+        response = requests.post('https://api.openai.com/v1/chat/completions', 
+                               json=payload, headers=headers)
+        response.raise_for_status()
+        return response.json()["choices"][0]["message"]["content"]
+    except Exception as e:
+        return f"Error: {str(e)}"

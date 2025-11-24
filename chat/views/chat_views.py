@@ -33,19 +33,7 @@ def client_input(request):
                 client_input=client_input,
                 response_text=ai_response_text,
             )
-            
-            
             #4. Devuelvo la respuesta al frontend como JSON
-        
-        #     return JsonResponse({
-        #         'status': 'success',
-        #         'client_input': client_input.client_input,
-        #         'ai_response': "Mensaje hardcodeado",
-        #         'created': "cualquier fecha",
-        #         'client_name': client_input.user.clientprofile.name if hasattr(client_input.user, 'clientprofile') else "User"
-        # })
-            
-        
         
             return JsonResponse({
                 'status': 'success',
