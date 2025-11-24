@@ -1,11 +1,20 @@
 import sys
 import os
 from django.conf import settings
+from dotenv import load_dotenv
 
-# ✅ SOLO PARA PRUEBAS LOCALES - LUEGO REVOCAR
-TEMPORAL_API_KEY = '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'  # Usa tu key
-os.environ["OPENAI_API_KEY"] = TEMPORAL_API_KEY
-print("🔑 API Key temporal configurada")
+# Cargar variables de entorno desde el archivo .env
+load_dotenv()
+
+# Obtener la API key desde las variables de entorno
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+if OPENAI_API_KEY:
+    os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
+    print("🔑 API Key cargada desde .env")
+else:
+    print("⚠️ ADVERTENCIA: No se encontró OPENAI_API_KEY en las variables de entorno")
+    raise ValueError("OPENAI_API_KEY no está configurada en el archivo .env")
 
 base_path = os.path.join(os.path.dirname(__file__), '../../AuditAI-Fer')
 sys.path.insert(0, base_path)
